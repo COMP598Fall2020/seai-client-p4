@@ -7,7 +7,8 @@ import java.net.InetSocketAddress
 import java.time.Duration
 
 fun main(args: Array<String>) {
-    attachToKafkaServer()
+    val messages = attachToKafkaServer()
+    println(messages.size)
 
     val port = 8082
     println("Starting server at ${InetAddress.getLocalHost().hostName}:${port}")
@@ -36,7 +37,7 @@ fun main(args: Array<String>) {
     }
 }
 
-fun attachToKafkaServer() {
+fun attachToKafkaServer(): MutableList<Message>{
     val kafka = Kotka(
         kafkaServers = "fall2020-comp598.cs.mcgill.ca:9092", config = KotkaConfig(
             partitionCount = 2,
@@ -48,9 +49,11 @@ fun attachToKafkaServer() {
     )
 
     val team = InetAddress.getLocalHost().hostName.substringAfterLast("-")
+    val messages = MutableList<Message> = mutableListOf()
     kafka.consumer(topic = "movielog$team", threads = 2, messageClass = Message::class) { message ->
-        println(message.name)
+        messages.add(message)
     }
+    return messages
 }
 
 data class Message(val name: String, val age: Int)
