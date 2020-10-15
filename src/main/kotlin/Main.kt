@@ -23,8 +23,8 @@ val teamTopic = "movielog$team"
 val kafkaServer = "fall2020-comp598.cs.mcgill.ca:9092"
 
 fun main(args: Array<String>)  {
-    attachToKafkaServerUsingKotkaClient()
-    //attachToKafkaServerUsingDefaultClient()
+//    attachToKafkaServerUsingKotkaClient()
+    attachToKafkaServerUsingDefaultClient()
 
     val port = 8082
     println("Starting server at ${InetAddress.getLocalHost().hostName}:${port}")
@@ -84,7 +84,6 @@ fun attachToKafkaServerUsingKotkaClient() {
 
     kafka.consumer(topic = teamTopic, threads = 2, messageClass = Message::class) { message ->
         // YOUR CODE GOES HERE
-        message.print(Printed.toSysOut())
     }
 }
 
