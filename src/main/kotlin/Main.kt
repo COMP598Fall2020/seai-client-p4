@@ -49,7 +49,7 @@ fun attachToKafkaServer() {
 
     val team = InetAddress.getLocalHost().hostName.substringAfterLast("-")
     kafka.consumer(topic = "movielog$team", threads = 2, messageClass = Message::class) { message ->
-        println(message)
+        println(message.name)
     }
 }
 
