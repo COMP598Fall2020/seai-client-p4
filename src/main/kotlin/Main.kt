@@ -5,10 +5,26 @@ import java.io.PrintWriter
 import java.net.InetAddress
 import java.net.InetSocketAddress
 import java.time.Duration
+import org.apache.kafka.streams.KafkaStreams
 
-fun main(args: Array<String>) {
-    val messages = attachToKafkaServer()
-    println(messages.size)
+import org.apache.kafka.common.serialization.Serdes
+import org.apache.kafka.common.utils.Bytes
+
+import org.apache.kafka.streams.state.KeyValueStore
+
+import org.apache.kafka.streams.StreamsBuilder
+
+import org.apache.kafka.streams.StreamsConfig
+import org.apache.kafka.streams.kstream.*
+import java.util.*
+
+val team = InetAddress.getLocalHost().hostName.substringAfterLast("-")
+val teamTopic = "movielog$team"
+val kafkaServer = "fall2020-comp598.cs.mcgill.ca:9092"
+
+fun main(args: Array<String>)  {
+//    attachToKafkaServerUsingKotkaClient()
+    attachToKafkaServerUsingDefaultClient()
 
     val port = 8082
     println("Starting server at ${InetAddress.getLocalHost().hostName}:${port}")
@@ -37,9 +53,27 @@ fun main(args: Array<String>) {
     }
 }
 
-fun attachToKafkaServer(): MutableList<Message>{
+// Documentation: https://kafka.apache.org/documentation/streams/
+fun attachToKafkaServerUsingDefaultClient() {
+    val props = Properties()
+    props.put(StreamsConfig.APPLICATION_ID_CONFIG, "seai-application")
+    props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServer)
+    props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().javaClass)
+    props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().javaClass)
+
+
+    val builder = StreamsBuilder()
+    val textLines = builder.stream<String, String>("movielog4")
+    textLines.print(Printed.toSysOut())
+
+    val streams = KafkaStreams(builder.build(), props)
+    streams.start()
+}
+
+// Documentation: https://github.com/blueanvil/kotka
+fun attachToKafkaServerUsingKotkaClient() {
     val kafka = Kotka(
-        kafkaServers = "fall2020-comp598.cs.mcgill.ca:9092", config = KotkaConfig(
+        kafkaServers = kafkaServer, config = KotkaConfig(
             partitionCount = 2,
             replicationFactor = 1,
             consumerProps = mapOf("max.poll.records" to "1").toProperties(),
@@ -48,13 +82,9 @@ fun attachToKafkaServer(): MutableList<Message>{
         )
     )
 
-    val team = InetAddress.getLocalHost().hostName.substringAfterLast("-")
-    val messages: MutableList<Message> = mutableListOf()
-    kafka.consumer(topic = "movielog$team", threads = 2, messageClass = Message::class) { message ->
-        println("Reached this point in the code")
-        messages.add(message)
+    kafka.consumer(topic = teamTopic, threads = 2, messageClass = Message::class) { message ->
+        // YOUR CODE GOES HERE
     }
-    return messages
 }
 
 data class Message(val name: String, val age: Int)
