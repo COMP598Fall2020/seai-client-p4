@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
     implementation("com.github.blueanvil:kotka:1.1.1")
+    implementation("org.apache.kafka:kafka-streams:2.6.0")
 }
 
 tasks.withType<KotlinCompile> {
