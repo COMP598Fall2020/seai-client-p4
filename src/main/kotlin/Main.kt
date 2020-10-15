@@ -15,6 +15,7 @@ import org.apache.kafka.streams.state.KeyValueStore
 import org.apache.kafka.streams.StreamsBuilder
 
 import org.apache.kafka.streams.StreamsConfig
+import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.streams.kstream.*
 import java.util.*
 
@@ -62,7 +63,7 @@ fun attachToKafkaServerUsingDefaultClient() {
     props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().javaClass)
 
     // The following line resets the application to reprocess the data from the start
-    props.put(StreamsConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
+    props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
 
     val builder = StreamsBuilder()
     val textLines = builder.stream<String, String>("movielog4")
