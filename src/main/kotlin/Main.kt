@@ -49,7 +49,7 @@ fun attachToKafkaServer(): MutableList<Message>{
     )
 
     val team = InetAddress.getLocalHost().hostName.substringAfterLast("-")
-    val messages = MutableList<Message> = mutableListOf()
+    val messages: MutableList<Message> = mutableListOf()
     kafka.consumer(topic = "movielog$team", threads = 2, messageClass = Message::class) { message ->
         messages.add(message)
     }
