@@ -7,7 +7,7 @@ import java.net.InetSocketAddress
 import java.time.Duration
 
 fun main(args: Array<String>) {
-//    attachToKafkaServer()
+    attachToKafkaServer()
 
     val port = 8082
     println("Starting server at ${InetAddress.getLocalHost().hostName}:${port}")
@@ -49,7 +49,7 @@ fun attachToKafkaServer() {
 
     val team = InetAddress.getLocalHost().hostName.substringAfterLast("-")
     kafka.consumer(topic = "movielog$team", threads = 2, messageClass = Message::class) { message ->
-        // YOUR CODE GOES HERE
+        println(message)
     }
 }
 
