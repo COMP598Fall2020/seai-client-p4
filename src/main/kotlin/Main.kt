@@ -70,6 +70,7 @@ fun attachToKafkaServerUsingDefaultClient() {
     textLines.print(Printed.toSysOut())
 
     val streams = KafkaStreams(builder.build(), props)
+    streams.cleanUp();
     streams.start()
 }
 
