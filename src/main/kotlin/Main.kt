@@ -67,7 +67,8 @@ fun attachToKafkaServerUsingDefaultClient() {
 
     val builder = StreamsBuilder()
     val textLines = builder.stream<String, String>("movielog4")
-    textLines.print(Printed.toFile("kstream.log"))
+    textLines.print(Printed.toSysOut())
+    //textLines.print(Printed.toFile("kstream.log"))
 
     val streams = KafkaStreams(builder.build(), props)
     streams.cleanUp();
