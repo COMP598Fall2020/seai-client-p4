@@ -46,7 +46,7 @@ fun main(args: Array<String>)  {
                 // ==================
 
                 out.println(recommendations)
-                println("Recommended watchlist for user $userId: $recommendations")
+                //println("Recommended watchlist for user $userId: $recommendations")
             }
         }
 
@@ -72,6 +72,7 @@ fun attachToKafkaServerUsingDefaultClient() {
     val streams = KafkaStreams(builder.build(), props)
     streams.cleanUp();
     streams.start()
+
 }
 
 // Documentation: https://github.com/blueanvil/kotka
