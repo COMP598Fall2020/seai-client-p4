@@ -61,8 +61,9 @@ fun main(args: Array<String>)  {
 fun attachToKafkaServerUsingDefaultClient() {
 
     // Trying to reset the stream
-    val resetter = StreamsResetter();
-    resetter.run("--application-id", "seai-application", "--bootstrap-servers", kafkaServer, "--input-topics", "movielog4");
+    StreamsResetter resetter = new StreamsResetter();
+    String[] args = {"--application-id", "seai-application", "--bootstrap-servers", kafkaServer, "--input-topics", "movielog4"};
+    resetter.run(args);
 
     // Set properties for stream
     val props = Properties()
