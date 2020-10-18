@@ -17,6 +17,9 @@ import org.apache.kafka.streams.StreamsBuilder
 import org.apache.kafka.streams.StreamsConfig
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.streams.kstream.*
+
+import org.apache.kafka.tools.StreamsResetter;
+
 import java.util.*
 
 val team = InetAddress.getLocalHost().hostName.substringAfterLast("-")
@@ -56,6 +59,13 @@ fun main(args: Array<String>)  {
 
 // Documentation: https://kafka.apache.org/documentation/streams/
 fun attachToKafkaServerUsingDefaultClient() {
+
+    // Trying to reset the stream
+    StreamsResetter resetter = new StreamsResetter();
+    String[] args = {"--application-id", "seai-application", "--bootstrap-servers", kafkaServer, "--input-topics", "movielog4"};
+    resetter.run(args);
+
+    // Set properties for stream
     val props = Properties()
     props.put(StreamsConfig.APPLICATION_ID_CONFIG, "seai-application")
     props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServer)
@@ -64,6 +74,9 @@ fun attachToKafkaServerUsingDefaultClient() {
 
     // The following line resets the application to reprocess the data from the start
     props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
+
+
+
 
     val builder = StreamsBuilder()
     val textLines = builder.stream<String, String>("movielog4")
