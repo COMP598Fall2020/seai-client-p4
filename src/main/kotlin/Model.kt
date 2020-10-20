@@ -8,6 +8,8 @@ import es.upm.etsisi.cf4j.util.Range
 import es.upm.etsisi.cf4j.data.DataModel
 import es.upm.etsisi.cf4j.qualityMeasure.prediction.RMSE
 import es.upm.etsisi.cf4j.recommender.matrixFactorization.*
+import es.upm.etsisi.cf4j.qualityMeasure.recommendation.*
+import org.apache.commons.csv.CSVFormat
 import java.io.BufferedReader
 import java.io.File
 import java.io.InputStream
@@ -18,43 +20,47 @@ import krangl.*
 class CFmodel() 
 {
     val NUM_ITERS : Int = 50
-
     val RANDOM_SEED : Long = 43
-
-    val DATA_FILE_NAME : String = ""
+    val DATA_FILE_NAME : String = "./data/ratings.csv"
+    val TRAIN_PERCENT : Double = 0.3
+    val TEST_PERCENT : Double = 0.3
+    val REGULATION : Double = 0.250
 
     protected lateinit var dataModel : DataModel
     protected lateinit var dataSet : RandomSplitDataSet
     protected lateinit var recommender : Recommender
-    protected lateinit var movies : MutableMap<String, String>
+    //protected lateinit var movies : MutableMap<String, String>
+    protected lateinit var movies : DataFrame
 
     init {
         initDataSet()
     }
 
     fun initDataSet() {
-        // dataSet = RandomSplitDataSet(DATA_FILE_NAME, 30.0, 30.0, ",")
-        // dataModel = DataModel(dataSet) 
-        dataModel = BenchmarkDataModels.MovieLens100K()
-        readFile("u.txt", "|")
+        dataSet = RandomSplitDataSet(DATA_FILE_NAME, TRAIN_PERCENT, TEST_PERCENT, ",")
+        dataModel = DataModel(dataSet) 
+        //dataModel = BenchmarkDataModels.MovieLens100K()
+        //readFile("data/movies.csv", ",")
+        movies = DataFrame.readCSV("data/movies_all.csv")
+        //println(movies.filterByRow { it["id"] as Int > 1130 })
     }
 
     fun print() {
         println("hello world")
     }
 
-    fun readFile(fileName:String, separator:String) {
-        val inputStream: InputStream = File(fileName).inputStream()
-        movies = mutableMapOf()
-        inputStream.bufferedReader().useLines { 
-            lines -> lines.forEach { 
-                val s = it.split(separator)
-                val movieId : String = s[0]
-                val movieName : String = s[1]
-                movies.put(movieId, movieName)
-            }
-        }
-    }
+    // fun readFile(fileName:String, separator:String) {
+    //     val inputStream: InputStream = File(fileName).inputStream()
+    //     movies = mutableMapOf()
+    //     inputStream.bufferedReader().useLines { 
+    //         lines -> lines.forEach { 
+    //             val s = it.split(separator)
+    //             val movieId : String = s[0]
+    //             val movieName : String = s[1]
+    //             movies.put(movieId, movieName)
+    //         }
+    //     }
+    // }
 
     fun train() {
         // DataModel load
@@ -62,28 +68,51 @@ class CFmodel()
             println("Data loaded failed")
             return
         }
-        println(dataModel.toString())
+        // println(dataModel.toString())
+
+        val regValues = doubleArrayOf(0.000, 0.025, 0.05, 0.075, 0.100, 0.125, 0.150, 0.175, 0.200, 0.225, 0.250, 0.275, 0.300, 0.325)
+
 
         // To store results
-        //val plot =  LinePlot(NUM_FACTORS, "Regulation", "RMSE")
+        //val plot =  LinePlot(regValues, "Precision", "RMSE",)
 
         // Evaluate PMF Recommender
         //plot.addSeries("PMF")
-        val pmf : Recommender =  PMF(dataModel, 5, NUM_ITERS, 0.125, RANDOM_SEED)
-        pmf.fit()
+        //for (reg in regValues) {
+            val pmf = PMF(dataModel, 5, NUM_ITERS, REGULATION, RANDOM_SEED);
+            pmf.fit();
 
-        val rmse : QualityMeasure=  RMSE(pmf)
-        val rmseScore : Double = rmse.getScore()
+            val rmse : QualityMeasure=  RMSE(pmf)
+            val rmseScore : Double = rmse.getScore()
+
+            val precision = Precision(pmf, 20, 4.0)
+            val precisionScore : Double = precision.getScore()
+
+            val recall = Recall(pmf, 20, 4.0)
+            val recallScore : Double = recall.getScore()
+
+            println(precisionScore.toString())
+            println(recallScore.toString())
+            println(rmseScore.toString())
+            
+            //plot.setValue("PMF", precisionScore, rmseScore)
+        //}
+        // val pmf : Recommender =  PMF(dataModel, 5, NUM_ITERS, 0.125, RANDOM_SEED)
+        // pmf.fit()
+
+        // val rmse : QualityMeasure=  RMSE(pmf)
+        // val rmseScore : Double = rmse.getScore()
         
         //plot.setValue("PMF", 0.125, rmseScore)
 
         // Print results
-        //plot.printData("0", "0.0000")
-        println(rmseScore)
+        //plot.printData("0.0000")
+        //println(rmseScore)
 
-        recommender = pmf
+        //recommender = pmf
     }
 
+    // excluded_rated == true meaning we do not recommend movies that have been rated by this user
     fun predict(userId : String?, num : Int = 20, exclude_rated : Boolean = false) : List<Triple<Any?, Any?, Any?>>
     {
         // find user id in dataModel
@@ -91,8 +120,12 @@ class CFmodel()
         if (id == -1) 
             id = dataModel.findTestUserIndex(userId)
         if (id == -1) {
-            println("Cannot predict because userId not found")
-            return emptyList()
+            //println("Cannot predict because userId not found")
+            val list : MutableList<Triple<Any?, Any?, Any?>> = mutableListOf()
+            for (i in 0..num) {
+                list.add(Triple(userId, (0..movies.nrow).random(), null))
+            }
+            return Collections.unmodifiableList(list)
         }
         // pass in id and calculate score with every movie
         val items = dataModel.getItems()
@@ -104,9 +137,10 @@ class CFmodel()
         }
 
         val recommend_candidates : MutableList<Candidate> = mutableListOf()
+        //println(movies.filterByRow(it["id"] == "9004"))
         for (item in allItems) {
             val score : Double = recommender.predict(id, item.getItemIndex())
-            recommend_candidates.add(Candidate(userId, item.getId(), movies[item.getId()], score))
+            recommend_candidates.add(Candidate(userId, item.getId(), movies.row(item.getId().toInt()-1)["id_long"] as String?, score))
         }    
 
         // convert to df and sort
@@ -120,7 +154,7 @@ class CFmodel()
             val triple = Triple(row["rating"],row["movieId"],row["movieName"])
             if (!recommend_list.contains(triple)) {
                 recommend_list.add(triple)
-                println(triple)
+                //println(triple)
             }
             idx++
         }

@@ -15,6 +15,8 @@ import org.apache.kafka.streams.StreamsConfig
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.streams.kstream.*
 import java.util.*
+import kotlin.*
+import kotlin.text.*
 
 import se4ai.group4.model.* 
 
@@ -33,7 +35,6 @@ fun main(args: Array<String>)  {
 
     //train the model
     model.train()
-    val recommendation = model.predict("2", 20, false)  
 
     // HttpServer.create(InetSocketAddress(port), 0).apply {
     //     createContext("/recommend") { http ->
@@ -45,12 +46,17 @@ fun main(args: Array<String>)  {
 
     //             // ==================
     //             // YOUR CODE GOES HERE
-    //             val recommendations = listOf(20,22,23)
-    //             // val recommendation = model.predict(userId, 20, false)  
-    //             // println(recommendation)
+    //             //val recommendations = listOf(20,22,23)
+
+    //             val list = model.predict(userId, 20, false)  
+    //             //println(list)
                 
     //             // // each row has "rating", "movieId", "movieName"
-    //             // recommendation.map(String.toDouble(it.second))
+    //             // recommendations.map(it -> String.toDouble(it.second))
+    //             val recommendations : MutableList<Int> = mutableListOf()
+    //             for (i in list) {
+    //                 recommendations.add(i.second.toString().toInt())
+    //             }
 
     //             // ==================
 

@@ -20,6 +20,7 @@ dependencies {
     implementation("es.upm.etsisi:cf4j:2.1.1")
     implementation("com.github.holgerbrandl:krangl:-SNAPSHOT")
     implementation("com.beust:klaxon:5.0.1")
+    implementation("org.apache.commons:commons-csv:1.8")
 }
 
 tasks.withType<KotlinCompile> {
