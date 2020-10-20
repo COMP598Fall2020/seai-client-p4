@@ -9,49 +9,58 @@ import org.apache.kafka.streams.KafkaStreams
 
 import org.apache.kafka.common.serialization.Serdes
 import org.apache.kafka.common.utils.Bytes
-
 import org.apache.kafka.streams.state.KeyValueStore
-
 import org.apache.kafka.streams.StreamsBuilder
-
 import org.apache.kafka.streams.StreamsConfig
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.streams.kstream.*
 import java.util.*
 
+import se4ai.group4.model.* 
+
 val team = InetAddress.getLocalHost().hostName.substringAfterLast("-")
 val teamTopic = "movielog$team"
 val kafkaServer = "fall2020-comp598.cs.mcgill.ca:9092"
 
+val model = CFmodel()
+
 fun main(args: Array<String>)  {
-//    attachToKafkaServerUsingKotkaClient()
-    attachToKafkaServerUsingDefaultClient()
+    //attachToKafkaServerUsingKotkaClient()
+    //attachToKafkaServerUsingDefaultClient()
 
     val port = 8082
     println("Starting server at ${InetAddress.getLocalHost().hostName}:${port}")
 
-    HttpServer.create(InetSocketAddress(port), 0).apply {
-        createContext("/recommend") { http ->
-            http.responseHeaders.add("Content-type", "text/plain")
-            http.sendResponseHeaders(200, 0)
-            PrintWriter(http.responseBody).use { out ->
-                val userId = http.requestURI.path.substringAfterLast("/")
-                println("Received recommendation request for user $userId")
+    //train the model
+    model.train()
+    val recommendation = model.predict("2", 20, false)  
 
-                // ==================
-                // YOUR CODE GOES HERE
+    // HttpServer.create(InetSocketAddress(port), 0).apply {
+    //     createContext("/recommend") { http ->
+    //         http.responseHeaders.add("Content-type", "text/plain")
+    //         http.sendResponseHeaders(200, 0)
+    //         PrintWriter(http.responseBody).use { out ->
+    //             val userId = http.requestURI.path.substringAfterLast("/")
+    //             println("Received recommendation request for user $userId")
 
-                val recommendations = (0..20).toList().joinToString(",")
+    //             // ==================
+    //             // YOUR CODE GOES HERE
+    //             val recommendations = listOf(20,22,23)
+    //             // val recommendation = model.predict(userId, 20, false)  
+    //             // println(recommendation)
+                
+    //             // // each row has "rating", "movieId", "movieName"
+    //             // recommendation.map(String.toDouble(it.second))
 
-                // ==================
+    //             // ==================
 
-                out.println(recommendations)
-                println("Recommended watchlist for user $userId: $recommendations")
-            }
-        }
+    //             out.println(recommendations)
+    //             println("Recommended watchlist for user $userId: $recommendations")
+    //         }
+    //     }
 
-        start()
-    }
+    //     start()
+    // }
 }
 
 // Documentation: https://kafka.apache.org/documentation/streams/
@@ -89,6 +98,7 @@ fun attachToKafkaServerUsingKotkaClient() {
 
     kafka.consumer(topic = teamTopic, threads = 2, messageClass = Message::class) { message ->
         // YOUR CODE GOES HERE
+        // TODO: add new rating to the model and udpate embeddings
     }
 }
 
