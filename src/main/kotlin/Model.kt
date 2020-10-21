@@ -79,40 +79,38 @@ class CFmodel()
         // Evaluate PMF Recommender
         //plot.addSeries("PMF")
         //for (reg in regValues) {
-            val pmf = PMF(dataModel, 5, NUM_ITERS, REGULATION, RANDOM_SEED);
-            pmf.fit();
 
-            val rmse : QualityMeasure=  RMSE(pmf)
-            val rmseScore : Double = rmse.getScore()
+        val pmf = PMF(dataModel, 5, NUM_ITERS, REGULATION, RANDOM_SEED);
+        pmf.fit();
 
-            val precision = Precision(pmf, 20, 4.0)
-            val precisionScore : Double = precision.getScore()
+        val rmse : QualityMeasure=  RMSE(pmf)
+        val rmseScore : Double = rmse.getScore()
 
-            val recall = Recall(pmf, 20, 4.0)
-            val recallScore : Double = recall.getScore()
+        val precision = Precision(pmf, 20, 4.0)
+        val precisionScore : Double = precision.getScore()
 
-            println(precisionScore.toString())
-            println(recallScore.toString())
-            println(rmseScore.toString())
+        val recall = Recall(pmf, 20, 4.0)
+        val recallScore : Double = recall.getScore()
+
+        println(precisionScore.toString())
+        println(recallScore.toString())
+        println(rmseScore.toString())
             
-            //plot.setValue("PMF", precisionScore, rmseScore)
-        //}
-        // val pmf : Recommender =  PMF(dataModel, 5, NUM_ITERS, 0.125, RANDOM_SEED)
-        // pmf.fit()
-
-        // val rmse : QualityMeasure=  RMSE(pmf)
-        // val rmseScore : Double = rmse.getScore()
-        
-        //plot.setValue("PMF", 0.125, rmseScore)
-
+        //plot.setValue("PMF", precisionScore, rmseScore)
         // Print results
         //plot.printData("0.0000")
-        //println(rmseScore)
 
-        //recommender = pmf
+        recommender = pmf
     }
 
-    // excluded_rated == true meaning we do not recommend movies that have been rated by this user
+    /**
+     * Predict function used to output a list of recommended movies for the user
+     * @userId : active user id to give recommendations
+     * @num : number of recommendations to give
+     * @exclude_rate: weather or not to include movies that have been rated by the user before
+     *
+     * @return a list of Triple that consists of movieId, movieName, and predicted ratings
+     */
     fun predict(userId : String?, num : Int = 20, exclude_rated : Boolean = false) : List<Triple<Any?, Any?, Any?>>
     {
         // find user id in dataModel
@@ -122,7 +120,7 @@ class CFmodel()
         if (id == -1) {
             //println("Cannot predict because userId not found")
             val list : MutableList<Triple<Any?, Any?, Any?>> = mutableListOf()
-            for (i in 0..num) {
+            for (i in 1..num) {
                 list.add(Triple(userId, (0..movies.nrow).random(), null))
             }
             return Collections.unmodifiableList(list)

@@ -36,37 +36,37 @@ fun main(args: Array<String>)  {
     //train the model
     model.train()
 
-    // HttpServer.create(InetSocketAddress(port), 0).apply {
-    //     createContext("/recommend") { http ->
-    //         http.responseHeaders.add("Content-type", "text/plain")
-    //         http.sendResponseHeaders(200, 0)
-    //         PrintWriter(http.responseBody).use { out ->
-    //             val userId = http.requestURI.path.substringAfterLast("/")
-    //             println("Received recommendation request for user $userId")
+    HttpServer.create(InetSocketAddress(port), 0).apply {
+        createContext("/recommend") { http ->
+            http.responseHeaders.add("Content-type", "text/plain")
+            http.sendResponseHeaders(200, 0)
+            PrintWriter(http.responseBody).use { out ->
+                val userId = http.requestURI.path.substringAfterLast("/")
+                println("Received recommendation request for user $userId")
 
-    //             // ==================
-    //             // YOUR CODE GOES HERE
-    //             //val recommendations = listOf(20,22,23)
+                // ==================
+                // YOUR CODE GOES HERE
+                //val recommendations = listOf(20,22,23)
 
-    //             val list = model.predict(userId, 20, false)  
-    //             //println(list)
+                val list = model.predict(userId, 20, false)  
+                //println(list)
                 
-    //             // // each row has "rating", "movieId", "movieName"
-    //             // recommendations.map(it -> String.toDouble(it.second))
-    //             val recommendations : MutableList<Int> = mutableListOf()
-    //             for (i in list) {
-    //                 recommendations.add(i.second.toString().toInt())
-    //             }
+                // // each row has "rating", "movieId", "movieName"
+                // recommendations.map(it -> String.toDouble(it.second))
+                val recommendations : MutableList<Int> = mutableListOf()
+                for (i in list) {
+                    recommendations.add(i.second.toString().toInt())
+                }
 
-    //             // ==================
+                // ==================
 
-    //             out.println(recommendations)
-    //             println("Recommended watchlist for user $userId: $recommendations")
-    //         }
-    //     }
+                out.println(recommendations)
+                println("Recommended watchlist for user $userId: $recommendations")
+            }
+        }
 
-    //     start()
-    // }
+        start()
+    }
 }
 
 // Documentation: https://kafka.apache.org/documentation/streams/
