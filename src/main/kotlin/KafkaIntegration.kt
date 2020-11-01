@@ -18,6 +18,9 @@ import java.util.*
 import kotlin.*
 import kotlin.text.*
 
+import java.io.FileWriter
+import java.io.IOException
+
 import se4ai.group4.model.* 
 
 val team = InetAddress.getLocalHost().hostName.substringAfterLast("-")
@@ -27,7 +30,48 @@ val kafkaServer = "fall2020-comp598.cs.mcgill.ca:9092"
 
 fun main(args: Array<String>)  {
     messages = attachToKafkaServerUsingKotkaClient()
-    print(messages.first().name)
+
+    val CSV_HEADER = "userID, movie, rating"
+    var fileWriter: FileWriter? = null    try {
+
+        fileWriter = FileWriter("ratings.csv")
+        fileWriter.append(CSV_HEADER)
+        fileWriter.append('\n')
+
+        for (message in messages) {
+            println(message.name)
+            val info = message.split(",| |/|=|\\n".toRegex());
+            //# info[4] is user id\n",
+            //# info[7] is rate or data\n",
+            //# info[8] is movie title if rate, otherwise if data is info[9]\n",
+            //# info[9] is rating if rate\n",
+
+            if (info[7] == 'rate'){
+                fileWriter.append(info[4])
+                fileWriter.append(',')
+                fileWriter.append(info[8])
+                fileWriter.append(',')
+                fileWriter.append(info[9])
+                fileWriter.append('\n')
+            }
+        }
+
+        println("Write CSV successfully!" )
+
+    } catch (e: Exception) {
+        println("Writing CSV error!")
+        e.printStackTrace()
+    } finally {
+        try {
+            fileWriter!!.flush()
+            fileWriter.close()
+        } catch (e: IOException) {
+            println("Flushing/closing error!")
+            e.printStackTrace()
+        }
+    }
+}
+
 }
 
 // Documentation: https://github.com/blueanvil/kotka
