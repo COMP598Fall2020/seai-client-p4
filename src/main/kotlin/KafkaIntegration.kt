@@ -32,7 +32,7 @@ fun main(args: Array<String>)  {
 
 // Documentation: https://github.com/blueanvil/kotka
 fun attachToKafkaServerUsingKotkaClient() {
-    val messages = Collections.synchronizedList(ArrayList<TestMessage>())
+    val messages = Collections.synchronizedList(ArrayList<Message>())
 
     val kafka = Kotka(
         kafkaServers = kafkaServer, config = KotkaConfig(
