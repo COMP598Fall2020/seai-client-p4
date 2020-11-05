@@ -5,3 +5,4 @@ jdk:
 #   - chmod +x gradlew
 script:
   - ./gradlew run
+  
