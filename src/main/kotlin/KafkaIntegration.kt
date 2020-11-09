@@ -81,17 +81,18 @@ fun attachToKafkaServerUsingKotkaClient(): List<Message> {
         kafkaServers = kafkaServer, config = KotkaConfig(
             partitionCount = 2,
             replicationFactor = 1,
-            consumerProps = mapOf("max.poll.records" to "1").toProperties(),
+            consumerProps = mapOf("max.poll.records" to "1", "auto.offset.reset" to "earliest").toProperties(),
             producerProps = mapOf("batch.size" to "1").toProperties(),
             pollTimeout = Duration.ofMillis(100)
         )
     )
-
-    kafka.consumer(topic = teamTopic, threads = 2, messageClass = Message::class) { message ->
+    kafka.consumer(topic = teamTopic, threads = 2, messageClass = Message::class, pubSub = true) { message ->
         messages.add(message)
     }
 
     //wait(15, 500, "Consumer hasn't finished") { messages.size == 1 }
+    while (messages.size < 5){
+    }
     return messages
 }
 
