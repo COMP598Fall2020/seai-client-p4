@@ -1,8 +1,0 @@
-language: java
-jdk:
-  - oraclejdk11.0.9
-# before_script:
-#   - chmod +x gradlew
-script:
-  - ./gradlew run
-  
