@@ -62,7 +62,7 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    - name: Deploy-local with Gradle Run
-      run: ./gradlew run
+    - name: Deploy-local with Gradle Run in background
+      run: ./gradlew run &
 
 
