@@ -23,7 +23,8 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: fall2020-comp598-4.cs.mcgill.ca
-          username: localuseR
-          KEY: ${{secrets.SSH_ACTION_SECRET}}
+          username: localuser
+          key: ${{secrets.SSH_ACTION_SECRET}}
+          fingerprint: ${{secrets.SSH_ACTION_FINGERPRINT}}
 #           port: ${{ secrets.PORT }}
           script: whoami
