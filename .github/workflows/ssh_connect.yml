@@ -24,6 +24,6 @@ jobs:
         with:
           host: fall2020-comp598-4.cs.mcgill.ca
           username: localuser
-#           password: ${{ secrets.PASSWORD }}
+          password: ${{ secrets.SSH_ACTION_SECRET }}
 #           port: ${{ secrets.PORT }}
           script: whoami
