@@ -53,3 +53,8 @@ jobs:
 
     - name: Build with Gradle
       run: ./gradlew build
+
+    - name: Deploy-local with Gradle Run
+      run: ./gradlew run
+
+
