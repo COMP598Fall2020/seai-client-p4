@@ -18,7 +18,7 @@ import java.util.*
 import kotlin.*
 import kotlin.text.*
 
-import se4ai.group4.model.* 
+import model.CFmodel
 
 //val team = InetAddress.getLocalHost().hostName.substringAfterLast("-")
 //val teamTopic = "movielog$team"

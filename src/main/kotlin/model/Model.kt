@@ -1,4 +1,4 @@
-package se4ai.group4.model
+package model
 
 import es.upm.etsisi.cf4j.data.*
 import es.upm.etsisi.cf4j.util.plot.LinePlot

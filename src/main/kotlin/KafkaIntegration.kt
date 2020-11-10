@@ -21,7 +21,7 @@ import kotlin.text.*
 import java.io.FileWriter
 import java.io.IOException
 
-import se4ai.group4.model.*
+import model.*
 
 //val team = InetAddress.getLocalHost().hostName.substringAfterLast("-")
 val teamTopic = "movielog4"
