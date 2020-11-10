@@ -15,12 +15,16 @@ repositories {
 }
 
 dependencies {
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
     implementation("com.github.blueanvil:kotka:1.1.1")
     implementation("org.apache.kafka:kafka-streams:2.6.0")
-    implementation("es.upm.etsisi:cf4j:2.1.1")
-    implementation("com.github.holgerbrandl:krangl:-SNAPSHOT")
-    implementation("com.beust:klaxon:5.0.1")
-    implementation("org.apache.commons:commons-csv:1.8")
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.11.0")
+
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 }
 
 tasks.withType<KotlinCompile> {
