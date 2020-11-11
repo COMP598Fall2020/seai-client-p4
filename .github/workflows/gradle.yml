@@ -11,19 +11,6 @@ on:
 
 jobs:
 
-  # # connect to group's VM to continuously build and deploy machine localy
-  # ssh_connect:
-
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Run SSH command
-  #     uses: garygrossgarten/github-action-ssh@v0.5.0
-  #     with:
-  #       command: ls -a
-  #       host: fall2020-comp598-4.cs.mcgill.ca
-  #       username: localuser
-  #       privateKey: ${{secrets.SSH_ACTION_SECRET}}
-
   build:
 
     runs-on: ubuntu-latest
@@ -65,9 +52,12 @@ jobs:
     - name: Run SSH command
       uses: garygrossgarten/github-action-ssh@v0.5.0
       with:
-        command: cd seai-client-p4 && git pull && killall -9 java && ./gradlew run -x test
+        command: ls
         host: fall2020-comp598-4.cs.mcgill.ca
         username: localuser
         privateKey: ${{secrets.SSH_ACTION_SECRET}}
+
+    - name: Pull existing repo and run application
+      run: cd Comp598_Project/seai-client-p4 && git pull && killall -9 java && ./gradlew run -x test
 
 
