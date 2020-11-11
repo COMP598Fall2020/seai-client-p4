@@ -57,3 +57,15 @@ tasks.register<TrainingTask>("helloTask") {
     messageText = "Hello there!"
     webhookUrl = "your webhook URL here"
 }
+
+tasks.register("trainTask", JavaExec::class) {
+    //findProperty("<ARGUMENT>")?.let { args = listOf(it.toString()) }
+    main = "ModelTask"
+    classpath = sourceSets["main"].runtimeClasspath
+}
+
+tasks.register("integrationTask", JavaExec::class) {
+    //findProperty("<ARGUMENT>")?.let { args = listOf(it.toString()) }
+    main = "IntegrationTask"
+    classpath = sourceSets["main"].runtimeClasspath
+}

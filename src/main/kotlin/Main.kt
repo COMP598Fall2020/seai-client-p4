@@ -70,25 +70,25 @@ fun main(args: Array<String>)  {
 }
 
 // Documentation: https://kafka.apache.org/documentation/streams/
-fun attachToKafkaServerUsingDefaultClient() {
-    val props = Properties()
-    props.put(StreamsConfig.APPLICATION_ID_CONFIG, "seai-application")
-    props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServer)
-    props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().javaClass)
-    props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().javaClass)
-
-    // The following line resets the application to reprocess the data from the start
-    props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
-
-    val builder = StreamsBuilder()
-    val textLines = builder.stream<String, String>("movielog4")
-    textLines.print(Printed.toSysOut())
-    //textLines.print(Printed.toFile("kstream.log"))
-
-    val streams = KafkaStreams(builder.build(), props)
-    streams.cleanUp();
-    streams.start()
-}
+//fun attachToKafkaServerUsingDefaultClient() {
+//    val props = Properties()
+//    props.put(StreamsConfig.APPLICATION_ID_CONFIG, "seai-application")
+//    props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServer)
+//    props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().javaClass)
+//    props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().javaClass)
+//
+//    // The following line resets the application to reprocess the data from the start
+//    props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
+//
+//    val builder = StreamsBuilder()
+//    val textLines = builder.stream<String, String>("movielog4")
+//    textLines.print(Printed.toSysOut())
+//    //textLines.print(Printed.toFile("kstream.log"))
+//
+//    val streams = KafkaStreams(builder.build(), props)
+//    streams.cleanUp();
+//    streams.start()
+//}
 
 // Documentation: https://github.com/blueanvil/kotka
 //fun attachToKafkaServerUsingKotkaClient() {

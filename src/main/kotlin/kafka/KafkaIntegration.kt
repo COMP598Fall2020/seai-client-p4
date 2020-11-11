@@ -1,3 +1,5 @@
+package kafka
+
 import com.blueanvil.kotka.Consumer
 import com.blueanvil.kotka.Kotka
 import com.blueanvil.kotka.KotkaConfig

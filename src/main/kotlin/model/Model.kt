@@ -22,6 +22,7 @@ class CFmodel()
     val NUM_ITERS : Int = 50
     val RANDOM_SEED : Long = 43
     val DATA_FILE_NAME : String = "./data/ratings.csv"
+    val MODEL_SAVE_PATH : String = "./saved/model.txt"
     val TRAIN_PERCENT : Double = 0.3
     val TEST_PERCENT : Double = 0.3
     val REGULATION : Double = 0.250
@@ -33,7 +34,8 @@ class CFmodel()
     protected lateinit var movies : DataFrame
 
     init {
-        initDataSet()
+        if (!load())
+            initDataSet()
     }
 
     fun initDataSet() {
@@ -45,8 +47,18 @@ class CFmodel()
         //println(movies.filterByRow { it["id"] as Int > 1130 })
     }
 
-    fun print() {
-        println("hello world")
+    fun save() {
+        dataModel.save(MODEL_SAVE_PATH)
+    }
+
+    fun load() : Boolean {
+        var file = File(MODEL_SAVE_PATH)
+        var fileExists = file.exists()
+        if (fileExists) {
+            dataModel = DataModel.load(MODEL_SAVE_PATH)
+            return true;
+        }
+        return false;
     }
 
     // fun readFile(fileName:String, separator:String) {
