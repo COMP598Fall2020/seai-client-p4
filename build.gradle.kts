@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import tasks.TrainingTask
 
 plugins {
     kotlin("jvm") version "1.4.10"
@@ -50,4 +51,9 @@ tasks.withType<KotlinCompile> {
 
 application {
     mainClass.set("MainKt")
+}
+
+tasks.register<TrainingTask>("helloTask") {
+    messageText = "Hello there!"
+    webhookUrl = "your webhook URL here"
 }

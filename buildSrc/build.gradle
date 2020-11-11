@@ -35,10 +35,3 @@ compileTestKotlin {
         jvmTarget = "1.8"
     }
 }
-
-//import tasks.TrainingTask
-//
-//task helloSlack(type: TrainingTask) {
-//    messageText = "Hello there!"
-//    webhookUrl = "your webhook URL here"
-//}
