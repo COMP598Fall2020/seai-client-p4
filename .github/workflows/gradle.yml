@@ -39,9 +39,11 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}  
         restore-keys: ${{ runner.os }}-gradle
 
+    
+
     - name: Train model with Gradle
-      run: ./gradlew trainTask
-      
+      run: ./gradlew integrationTask
+
     - name: Build with Gradle
       run: ./gradlew build
 
