@@ -29,8 +29,8 @@ jobs:
       run: chmod +x gradlew
 
     # Make sure to stop any ongoing deamons prior to rerunning and deploying new machine
-    - name: Stop ongoing Gradle Deamons in order to rerun
-      run: ./gradlew --stop
+    # - name: Stop ongoing Gradle Deamons in order to rerun
+    #   run: ./gradlew --stop
 
     - name: Cache Gradle packages
       uses: actions/cache@v2
@@ -52,7 +52,7 @@ jobs:
     - name: Run SSH command
       uses: garygrossgarten/github-action-ssh@v0.5.0
       with:
-       command: cd Comp598_Project/seai-client-p4/ && ./gradlew --stop && git pull  # && ./gradlew --stop && ./gradlew run -x test &
+       command: cd Comp598_Project/seai-client-p4/ && ./gradlew --stop && git pull && ./gradlew run &
        host: fall2020-comp598-4.cs.mcgill.ca
        username: localuser
        privateKey: ${{secrets.SSH_ACTION_SECRET}}
