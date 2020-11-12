@@ -1,0 +1,5 @@
+1.041039 for {numIters=100, lambda=0.15, seed=43, gamma=0.01, numFactors=5}
+1.053690 for {numIters=75, lambda=0.15, seed=43, gamma=0.01, numFactors=5}
+1.077121 for {numIters=50, lambda=0.15, seed=43, gamma=0.01, numFactors=5}
+1.077211 for {numIters=100, lambda=0.1, seed=43, gamma=0.01, numFactors=5}
+1.087151 for {numIters=75, lambda=0.1, seed=43, gamma=0.01, numFactors=5}
