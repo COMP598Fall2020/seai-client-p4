@@ -48,7 +48,7 @@ jobs:
       run: ./gradlew build
 
     - name: Test
-      run: ./gradlew test
+      run: ./gradlew clean test
 
 #    - name: Run SSH command
 #      uses: garygrossgarten/github-action-ssh@v0.5.0

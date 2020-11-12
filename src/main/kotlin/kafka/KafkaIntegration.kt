@@ -43,7 +43,7 @@ var pointer_date = "0"
 
 class KafkaIntegration() {
 
-    fun run() {
+    fun run(): Boolean {
 
 
         var fileWriter: FileWriter? = null; try {
@@ -95,6 +95,7 @@ class KafkaIntegration() {
         } catch (e: Exception) {
             println("Error!")
             e.printStackTrace()
+            return false
         } finally {
             try {
                 fileWriter!!.flush()
@@ -102,8 +103,11 @@ class KafkaIntegration() {
             } catch (e: IOException) {
                 println("Flushing/closing error!")
                 e.printStackTrace()
+                return false
             }
         }
+
+        return true
     }
 
     fun getMovieID(title: String): String {
@@ -139,18 +143,25 @@ class KafkaIntegration() {
     }
 
     // Documentation: https://github.com/blueanvil/kotka
-    fun attachToKafkaServerUsingKotkaClient() {
-        val kafka = CustomKotka(
-                kafkaServers = kafkaServer, config = KotkaConfig(
-                partitionCount = 2,
-                replicationFactor = 1,
-                consumerProps = mapOf("max.poll.records" to "1", "auto.offset.reset" to "earliest").toProperties(),
-                producerProps = mapOf("batch.size" to "1").toProperties(),
-                pollTimeout = Duration.ofMillis(100)
-        )
-        )
-        kafka.consumer(topic = teamTopic, threads = 2, messageClass = Message::class, pubSub = false) { message ->
+    fun attachToKafkaServerUsingKotkaClient(): Boolean {
+        try {
+            val kafka = CustomKotka(
+                    kafkaServers = kafkaServer, config = KotkaConfig(
+                    partitionCount = 2,
+                    replicationFactor = 1,
+                    consumerProps = mapOf("max.poll.records" to "1", "auto.offset.reset" to "earliest").toProperties(),
+                    producerProps = mapOf("batch.size" to "1").toProperties(),
+                    pollTimeout = Duration.ofMillis(100)
+            )
+            )
+            kafka.consumer(topic = teamTopic, threads = 2, messageClass = Message::class, pubSub = false) { message ->
+            }
+        } catch (e: Exception) {
+            println("Attach to Kafka Server failed: $e")
+            return false
         }
+
+        return true
     }
 
     data class Message(val name: String, val age: Int)
