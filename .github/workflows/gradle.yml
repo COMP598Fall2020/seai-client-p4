@@ -38,7 +38,6 @@ jobs:
         path: ~/.gradle/caches
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}  
         restore-keys: ${{ runner.os }}-gradle
-
     
     # change soon
     # - name: Train model with Gradle
@@ -50,11 +49,12 @@ jobs:
     - name: Test
       run: ./gradlew clean test
 
-#    - name: Run SSH command
-#      uses: garygrossgarten/github-action-ssh@v0.5.0
-#      with:
-#        command: cd Comp598_Project/seai-client-p4/ && ./gradlew --stop && ./gradlew run -x test &
-#        host: fall2020-comp598-4.cs.mcgill.ca
-#        username: localuser
-#        privateKey: ${{secrets.SSH_ACTION_SECRET}}
+   - name: Run SSH command
+     uses: garygrossgarten/github-action-ssh@v0.5.0
+     with:
+       command: cd Comp598_Project/seai-client-p4/
+        # && ./gradlew --stop && ./gradlew run -x test &
+       host: fall2020-comp598-4.cs.mcgill.ca
+       username: localuser
+       privateKey: ${{secrets.SSH_ACTION_SECRET}}
 
