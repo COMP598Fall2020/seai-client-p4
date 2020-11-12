@@ -20,10 +20,10 @@ internal class KafkaIntegrationTest {
         assertTrue(kafkaIntegration.getMovieID(movieTitle) == "-1")
     }
 
-    @Test
-    @DisplayName("Should return true")
-    fun attachToKafkaServerUsingKotkaClient() {
-        val kafkaIntegration = KafkaIntegration()
-        assertTrue(kafkaIntegration.attachToKafkaServerUsingKotkaClient(), "Should return 'true'")
-    }
+    // @Test
+    // @DisplayName("Should return true")
+    // fun attachToKafkaServerUsingKotkaClient() {
+    //     val kafkaIntegration = KafkaIntegration()
+    //     assertTrue(kafkaIntegration.attachToKafkaServerUsingKotkaClient(), "Should return 'true'")
+    // }
 }
