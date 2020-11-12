@@ -40,9 +40,9 @@ jobs:
         restore-keys: ${{ runner.os }}-gradle
 
     
-
-    - name: Train model with Gradle
-      run: ./gradlew integrationTask
+    # change soon
+    # - name: Train model with Gradle
+    #   run: ./gradlew integrationTask
 
     - name: Build with Gradle
       run: ./gradlew build
