@@ -1,4 +1,3 @@
 killall -9 java
-git pull
 ./gradlew --stop 
-./gradlew run &
+nohup ./gradlew run > recommendations.out 2> recommendations.err < /dev/null &
