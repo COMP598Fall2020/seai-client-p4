@@ -17,7 +17,7 @@ public class ModelTask {
 
         grid.addParam("numIters", new int[] {50, 75, 100});
         grid.addParam("numFactors", new int[] {5, 10, 15});
-        grid.addParam("lambda", new double[] {0.05, 0.10, 0.15});
+        grid.addParam("lambda", new double[] {0.05, 0.10, 0.15, 0.2, 0.25});
         grid.addParam("gamma", new double[] {0.001, 0.01, 0.1});
 
         grid.addFixedParam("seed", 43L);

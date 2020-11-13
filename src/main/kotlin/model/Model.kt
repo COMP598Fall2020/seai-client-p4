@@ -16,7 +16,7 @@ import java.util.*
 
 class CFmodel()
 {
-    val NUM_ITERS : Int = 50
+    val NUM_ITERS : Int = 100
     val RANDOM_SEED : Long = 43
     val DATA_FILE_NAME : String = "./data/ratings.csv"
     val DATA_SAVE_PATH : String = "./saved/datamodel.txt"
@@ -24,6 +24,8 @@ class CFmodel()
     val TRAIN_PERCENT : Double = 0.7
     val TEST_PERCENT : Double = 0.3
     val REGULATION : Double = 0.250
+    val NUM_FACTORS : Int = 5
+    val LR : Double = 0.01
 
     lateinit var dataModel : DataModel
     protected lateinit var dataSet : RandomSplitDataSet
@@ -71,7 +73,7 @@ class CFmodel()
 
 
     fun train() {
-        val pmf = PMF(dataModel, 5, NUM_ITERS, REGULATION, RANDOM_SEED);
+        val pmf = PMF(dataModel, NUM_FACTORS, NUM_ITERS, REGULATION, LR, RANDOM_SEED);
         pmf.fit();
 
         val rmse : QualityMeasure=  RMSE(pmf)
