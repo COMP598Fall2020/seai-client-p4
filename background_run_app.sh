@@ -1,3 +1,4 @@
+# Kill ongoing java and gradle processes
 killall -9 java
 ./gradlew --stop 
 

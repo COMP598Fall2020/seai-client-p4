@@ -49,10 +49,8 @@ jobs:
       # change rights to bash script
       # execute bash script which:
           # kills existing Java processes
-          # stops ongoing gradle daemons
           # runs gradle application in the background to start recommendation server
-          # runs the gradle integrationTask
-          # pushes the updated movie data to the server
+          # runs the gradle integrationTask and push to github
        command: cd Comp598_Project/seai-client-p4/ && git pull && chmod +x background_run_app.sh && sh ./background_run_app.sh
        host: fall2020-comp598-4.cs.mcgill.ca
        username: localuser
