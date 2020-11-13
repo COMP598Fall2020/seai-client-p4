@@ -10,4 +10,7 @@ nohup ./gradlew run > recommendations.out 2> recommendations.err < /dev/null &
 # continuous data stream as it would appear in real life.
 ./gradlew integrationTask
 
-# git push
+# To update the remote repo with the new data in preparation for next build
+git add .
+git commit -m "updated kafka movie ratings data"
+git push

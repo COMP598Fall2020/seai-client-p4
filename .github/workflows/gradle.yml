@@ -5,6 +5,8 @@ name: Java CI with Gradle
 
 on:
   schedule:
+
+    # trigger build every 15 minutes
     - cron: "*/15 * * * *"
 
 jobs:
@@ -15,8 +17,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-
 
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
@@ -39,9 +39,20 @@ jobs:
     - name: Test
       run: ./gradlew clean test
 
+    # ssh into virtual machine 
     - name: Run SSH command
       uses: garygrossgarten/github-action-ssh@v0.5.0
       with:
+
+      # cd into client repo
+      # git pull
+      # change rights to bash script
+      # execute bash script which:
+          # kills existing Java processes
+          # stops ongoing gradle daemons
+          # runs gradle application in the background to start recommendation server
+          # runs the gradle integrationTask
+          # pushes the updated movie data to the server
        command: cd Comp598_Project/seai-client-p4/ && git pull && chmod +x background_run_app.sh && sh ./background_run_app.sh
        host: fall2020-comp598-4.cs.mcgill.ca
        username: localuser
