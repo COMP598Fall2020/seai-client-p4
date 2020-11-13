@@ -21,7 +21,7 @@ class CFmodel()
     val DATA_FILE_NAME : String = "./data/ratings.csv"
     val DATA_SAVE_PATH : String = "./saved/datamodel.txt"
     val MODEL_SAVE_PATH : String = "./saved/model.txt"
-    val TRAIN_PERCENT : Double = 0.3
+    val TRAIN_PERCENT : Double = 0.7
     val TEST_PERCENT : Double = 0.3
     val REGULATION : Double = 0.250
 

@@ -1,9 +1,6 @@
 package kafka
 
-import com.blueanvil.kotka.Consumer
-import com.blueanvil.kotka.Kotka
-import com.blueanvil.kotka.KotkaConfig
-import com.blueanvil.kotka.Producer
+import com.blueanvil.kotka.*
 import krangl.DataFrame
 import krangl.readCSV
 import java.time.Duration
@@ -19,11 +16,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecords
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.slf4j.LoggerFactory
-import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.Executors
-import java.util.concurrent.Future
-import java.util.concurrent.TimeUnit
-import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.*
 import kotlin.reflect.KClass
 import java.io.BufferedReader
 import java.io.FileReader
@@ -31,34 +24,42 @@ import java.util.ArrayList
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.io.File
+import java.util.concurrent.atomic.AtomicInteger
 
 val teamTopic = "movielog4"
 val kafkaServer = "fall2020-comp598.cs.mcgill.ca:9092"
 val messages = Collections.synchronizedList(ArrayList<List<String>>())
-val batch_size = 1000
+val batch_size = 1000 // number of ratings to collect before stopping the service
 val formatter = DateTimeFormatter.BASIC_ISO_DATE
 val current = LocalDateTime.now().format(formatter)
 //val current = "20201103" (can be used to set maximum date)
+val filename = "data/ratings.csv"
+val moviesFile = "data/movies.csv"
+
 var pointer_date = "0"
+
 
 class KafkaIntegration() {
 
     fun run(): Boolean {
-
+        // Collects up to batch_size amount of ratings data from the Kafka Stream. Will also stop when it passes "current" date.
+        // Appends all ratings data collected to data/ratings.csv
 
         var fileWriter: FileWriter? = null; try {
 
-            if (File("data/ratings.csv").exists()) {
-                fileWriter = FileWriter("data/ratings.csv", true)
+            if (File(filename).exists()) {
+                fileWriter = FileWriter(filename, true)
             } else {
-                fileWriter = FileWriter("data/ratings.csv", true)
+                // if file doesn't exist, create new file and add csv headers
+                fileWriter = FileWriter(filename, true)
                 fileWriter.append("userID, movieID, movieTitle, rating")
                 fileWriter.append('\n')
             }
 
-
             attachToKafkaServerUsingKotkaClient()
 
+
+            // Will continue collecting ratings data from Kafka stream until reaches batch_size or reaches a specific date
             while (messages.size < batch_size && pointer_date.toInt() <= current.toInt()) {
             }
 
@@ -114,7 +115,7 @@ class KafkaIntegration() {
         var fileReader: BufferedReader? = null
         try {
             var line: String?
-            fileReader = BufferedReader(FileReader("data/movies.csv"))
+            fileReader = BufferedReader(FileReader(moviesFile))
             // Read CSV header
             fileReader.readLine()
             // Read the file line by line starting from the second line
@@ -123,6 +124,7 @@ class KafkaIntegration() {
                 val tokens = line.split(",")
                 if (tokens.size > 0) {
                     if (tokens[1] == title) {
+                        // Search for movies with the same title in the movies dataset. If found, returns the movie ID.
                         return tokens[0]
                     }
                 }
@@ -166,6 +168,8 @@ class KafkaIntegration() {
 
     data class Message(val name: String, val age: Int)
 
+
+    // Custom implementation of Kotka function by blueanvil that has specific processing and fixes an existing indexing error
     class CustomKotka(private val kafkaServers: String,
                       private val config: KotkaConfig) {
 
@@ -286,13 +290,14 @@ class KafkaIntegration() {
         private fun processRecords(records: ConsumerRecords<String, String>) {
             for (record in records) {
                 if (stopped || messages.size >= batch_size || pointer_date.toInt() > current.toInt()) {
+                    // prevent synchronized list errors
                     break
                 }
                 val msgStr = record.value()
                 val info = msgStr.split("[, /=\\n]".toRegex())
-                pointer_date = info[0].substring(0, 4) + info[0].substring(5, 7) + info[0].substring(8, 10)
+                pointer_date = info[0].substring(0, 4) + info[0].substring(5, 7) + info[0].substring(8, 10) // Get date of current message
                 if (info[4] == "rate") {
-                    messages.add(info)
+                    messages.add(info) // Add message to list only if is ratings data.
                     //println(info)
                 }
             }
