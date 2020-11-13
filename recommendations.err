@@ -1,7 +1,7 @@
 Exception in thread "main" java.lang.ExceptionInInitializerError
 Caused by: java.lang.IllegalArgumentException: Provided rating already exist in user: 257131
-	at es.upm.etsisi.cf4j.data.TestUser.addTestRating(TestUser.java:96)
-	at es.upm.etsisi.cf4j.data.DataModel.<init>(DataModel.java:122)
+	at es.upm.etsisi.cf4j.data.User.addRating(User.java:133)
+	at es.upm.etsisi.cf4j.data.DataModel.<init>(DataModel.java:163)
 	at model.CFmodel.initDataSet(Model.kt:41)
 	at model.CFmodel.<init>(Model.kt:36)
 	at MainKt.<clinit>(Main.kt:27)
@@ -17,4 +17,4 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
 
 * Get more help at https://help.gradle.org
 
-BUILD FAILED in 25s
+BUILD FAILED in 17s

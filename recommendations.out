@@ -1,4 +1,4 @@
-Starting a Gradle Daemon, 3 stopped Daemons could not be reused, use --status for details
+Starting a Gradle Daemon, 6 stopped Daemons could not be reused, use --status for details
 > Task :buildSrc:compileKotlin UP-TO-DATE
 > Task :buildSrc:compileJava NO-SOURCE
 > Task :buildSrc:compileGroovy NO-SOURCE
@@ -20,9 +20,7 @@ Starting a Gradle Daemon, 3 stopped Daemons could not be reused, use --status fo
 > Task :processResources UP-TO-DATE
 > Task :classes UP-TO-DATE
 
-> Task :run
+> Task :run FAILED
 
 Loading dataset...
-
-> Task :run FAILED
 4 actionable tasks: 1 executed, 3 up-to-date
