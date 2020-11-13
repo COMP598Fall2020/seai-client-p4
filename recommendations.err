@@ -1,4 +1,20 @@
-Note: /home/localuser/Comp598_Project/seai-client-p4/src/main/java/es/upm/etsisi/cf4j/util/optimization/ParamsGrid.java uses or overrides a deprecated API.
-Note: Recompile with -Xlint:deprecation for details.
-Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
+Exception in thread "main" java.lang.ExceptionInInitializerError
+Caused by: java.lang.IllegalArgumentException: Provided rating already exist in user: 257131
+	at es.upm.etsisi.cf4j.data.User.addRating(User.java:133)
+	at es.upm.etsisi.cf4j.data.DataModel.<init>(DataModel.java:163)
+	at model.CFmodel.initDataSet(Model.kt:41)
+	at model.CFmodel.<init>(Model.kt:36)
+	at MainKt.<clinit>(Main.kt:27)
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':run'.
+> Process 'command '/usr/lib/jvm/java-11-openjdk-amd64/bin/java'' finished with non-zero exit value 1
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 17s
