@@ -4,8 +4,6 @@ import es.upm.etsisi.cf4j.data.DataModel
 import es.upm.etsisi.cf4j.data.RandomSplitDataSet
 import es.upm.etsisi.cf4j.qualityMeasure.QualityMeasure
 import es.upm.etsisi.cf4j.qualityMeasure.prediction.RMSE
-import es.upm.etsisi.cf4j.qualityMeasure.recommendation.Precision
-import es.upm.etsisi.cf4j.qualityMeasure.recommendation.Recall
 import es.upm.etsisi.cf4j.recommender.Recommender
 import es.upm.etsisi.cf4j.recommender.matrixFactorization.PMF
 import krangl.DataFrame
