@@ -1,8 +1,6 @@
 package kafka
 
 import com.blueanvil.kotka.*
-import krangl.DataFrame
-import krangl.readCSV
 import java.time.Duration
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import java.util.*
