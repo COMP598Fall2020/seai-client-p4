@@ -27,141 +27,199 @@ Starting server at fall2020-comp598-4:8082
 
 Fitting PMF(numFactors=5; numIters=100; gamma=0.01; lambda=0.25)
 ..........100 iterations
-Received recommendation request for user 297393
-Recommended watchlist for user 297393: [7587, 2975, 6938, 9984, 1304, 7107, 7823, 3870, 4683, 961, 6102, 8229, 8305, 5020, 5374, 8004, 91, 7547, 7813, 836]
-Received recommendation request for user 236838
-Recommended watchlist for user 236838: [4665, 1433, 7803, 3594, 1269, 7945, 3137, 8680, 5766, 1785, 9085, 9674, 2921, 7511, 9473, 6821, 7829, 1152, 233, 8301]
-Received recommendation request for user 6905
-Recommended watchlist for user 6905: [2921, 6207, 4337, 4795, 5169, 3192, 4148, 8144, 9798, 9009, 5718, 5179, 4391, 4995, 1323, 5816, 8796, 2927, 9105, 8056]
-Received recommendation request for user 263726
-Recommended watchlist for user 263726: [919, 5248, 9597, 7357, 511, 1138, 3306, 77, 448, 4782, 241, 4328, 6596, 9774, 64, 6029, 3545, 9564, 2194, 9904]
-Received recommendation request for user 466535
-Recommended watchlist for user 466535: [6258, 7612, 6360, 2161, 7893, 5516, 3999, 5245, 3512, 9575, 8471, 8607, 5103, 1219, 8924, 7588, 6661, 9662, 2014, 1846]
-Received recommendation request for user 143850
-Recommended watchlist for user 143850: [5964, 3939, 7425, 1529, 4720, 6609, 5689, 33, 7505, 5697, 7040, 5325, 2943, 2686, 6849, 5512, 7519, 4359, 6184, 1860]
-Received recommendation request for user 775191
-Recommended watchlist for user 775191: [2006, 9906, 2021, 149, 7302, 7885, 4224, 6285, 3861, 8705, 8937, 2303, 1835, 9002, 9817, 4402, 9842, 9524, 3136, 9359]
-Received recommendation request for user 749804
-Recommended watchlist for user 749804: [9870, 393, 1332, 7011, 7361, 1602, 1669, 9056, 1395, 503, 7595, 6307, 8701, 6461, 4407, 7276, 2447, 2708, 565, 1284]
-Received recommendation request for user 595184
-Recommended watchlist for user 595184: [953, 8051, 2059, 8510, 7618, 196, 7620, 805, 6966, 8270, 3089, 3537, 9712, 2883, 7183, 3878, 2050, 9248, 4981, 7953]
-Received recommendation request for user 582223
-Recommended watchlist for user 582223: [8118, 8468, 4163, 5969, 8589, 6151, 2524, 5707, 3919, 3485, 3497, 8703, 488, 8861, 7525, 3994, 687, 9544, 3460, 6464]
-Received recommendation request for user 119071
-Recommended watchlist for user 119071: [4249, 4312, 3636, 2700, 2907, 9735, 6911, 5630, 9527, 5657, 1956, 5830, 187, 3956, 7087, 2266, 3756, 3393, 5146, 22]
-Received recommendation request for user 317872
-Recommended watchlist for user 317872: [9293, 7086, 1186, 3329, 4991, 7646, 7013, 4985, 9860, 6959, 4044, 5472, 3116, 2087, 1376, 2930, 9737, 9018, 9671, 1546]
-Received recommendation request for user 394543
-Recommended watchlist for user 394543: [2969, 2200, 8654, 2945, 7956, 3418, 8338, 8012, 7427, 7529, 3538, 1642, 5143, 1354, 2039, 5612, 741, 8737, 8791, 9717]
-Received recommendation request for user 652231
-Recommended watchlist for user 652231: [853, 5019, 4340, 8968, 6313, 507, 7427, 8513, 3407, 1935, 5298, 486, 4719, 957, 8861, 5482, 6025, 8612, 6283, 790]
-Received recommendation request for user 564509
-Recommended watchlist for user 564509: [5880, 7416, 3767, 7717, 8972, 518, 4419, 8782, 5810, 5728, 7828, 9110, 4682, 5257, 7462, 4281, 4269, 2174, 3252, 5854]
-Received recommendation request for user 745211
-Recommended watchlist for user 745211: [1739, 458, 3508, 2301, 1272, 233, 8800, 4933, 2246, 9271, 1206, 8068, 4757, 2300, 5358, 7247, 4135, 929, 2067, 5269]
-Received recommendation request for user 273536
-Recommended watchlist for user 273536: [1462, 6033, 354, 4575, 7828, 1274, 6802, 7089, 151, 711, 5074, 5473, 6015, 8836, 8760, 7452, 9861, 7385, 421, 4164]
-Received recommendation request for user 556227
-Recommended watchlist for user 556227: [3971, 2062, 2174, 1662, 1835, 4408, 144, 3586, 5349, 8138, 1166, 48, 6466, 9318, 2071, 4728, 2931, 5084, 9575, 6528]
-Received recommendation request for user 715043
-Recommended watchlist for user 715043: [8944, 105, 5503, 5932, 4301, 958, 8149, 3094, 2122, 7262, 2111, 4601, 789, 4578, 8694, 8771, 2924, 7082, 8078, 181]
-Received recommendation request for user 47558
-Recommended watchlist for user 47558: [1239, 706, 4830, 5790, 9921, 8335, 5713, 2142, 7878, 4386, 2841, 2013, 4047, 8622, 2806, 7422, 9861, 646, 1558, 8943]
-Received recommendation request for user 742924
-Recommended watchlist for user 742924: [1017, 4692, 3035, 5621, 1410, 8963, 4050, 1897, 9837, 1197, 3342, 213, 4066, 1346, 6736, 8369, 2630, 3709, 3528, 167]
-Received recommendation request for user 54701
-Recommended watchlist for user 54701: [5804, 7039, 4507, 2974, 282, 9473, 6395, 1269, 6747, 1616, 5313, 3165, 2466, 4848, 2388, 6766, 4796, 4913, 489, 3997]
-Received recommendation request for user 284623
-Recommended watchlist for user 284623: [8130, 4297, 1137, 7474, 1326, 4533, 1953, 91, 7373, 9542, 4145, 954, 8468, 5824, 5679, 7500, 6189, 2741, 3395, 2133]
-Received recommendation request for user 284588
-Recommended watchlist for user 284588: [5194, 9786, 8344, 7914, 2118, 2366, 9801, 9412, 564, 8339, 3856, 9375, 8452, 3323, 6299, 4262, 9653, 5901, 4170, 9480]
-Received recommendation request for user 50059
-Recommended watchlist for user 50059: [5518, 1886, 2019, 8817, 1987, 5391, 8833, 5973, 2096, 4686, 6337, 8664, 5168, 2454, 499, 6207, 1151, 5318, 4717, 2746]
-Received recommendation request for user 338321
-Recommended watchlist for user 338321: [5667, 2024, 3676, 767, 1618, 9413, 5679, 8041, 4118, 210, 5005, 687, 6742, 5325, 480, 9965, 1679, 1831, 5682, 307]
-Received recommendation request for user 161862
-Recommended watchlist for user 161862: [8993, 4833, 1784, 965, 4783, 3323, 3424, 2971, 3724, 8718, 1909, 6412, 8734, 5138, 1089, 9777, 9610, 5937, 3928, 2540]
-Received recommendation request for user 622437
-Recommended watchlist for user 622437: [5107, 2411, 5956, 8456, 4837, 5490, 7671, 3779, 5068, 8980, 8396, 229, 1499, 7062, 5633, 6436, 6434, 2393, 5661, 956]
-Received recommendation request for user 810742
-Recommended watchlist for user 810742: [5381, 5515, 8980, 2149, 8399, 5352, 9472, 4955, 8590, 673, 5856, 7686, 5245, 1616, 9213, 8737, 6088, 3720, 9947, 5162]
-Received recommendation request for user 398690
-Recommended watchlist for user 398690: [7648, 3221, 6003, 3713, 4078, 1663, 6708, 5156, 6415, 8775, 4108, 4934, 9038, 2280, 1780, 7429, 3826, 4094, 9587, 5839]
-Received recommendation request for user 114654
-Recommended watchlist for user 114654: [9504, 6890, 2724, 7301, 7417, 1269, 1515, 5934, 1512, 8508, 1488, 2122, 2584, 8727, 5526, 9229, 7151, 8676, 7427, 3672]
-Received recommendation request for user 512023
-Recommended watchlist for user 512023: [6096, 3725, 4529, 839, 2356, 8187, 3745, 6203, 2431, 8722, 1274, 7925, 8342, 6835, 2090, 9877, 4011, 4663, 1537, 1190]
-Received recommendation request for user 98430
-Recommended watchlist for user 98430: [7890, 9195, 696, 4006, 6488, 6675, 8512, 6761, 7288, 1958, 5289, 6222, 8769, 1711, 9042, 3849, 299, 2050, 9092, 1722]
-Received recommendation request for user 679174
-Recommended watchlist for user 679174: [1642, 7590, 3996, 8778, 9885, 2619, 4882, 7153, 9662, 5698, 6269, 7872, 7907, 5275, 7538, 7829, 8756, 2000, 7732, 7462]
-Received recommendation request for user 733332
-Recommended watchlist for user 733332: [3416, 351, 5638, 2048, 6668, 4883, 263, 2367, 1972, 9263, 5666, 1330, 3170, 5883, 5634, 896, 4859, 9828, 1982, 1633]
-Received recommendation request for user 786306
-Recommended watchlist for user 786306: [9516, 3615, 1084, 1013, 8067, 3668, 8438, 2200, 2673, 7539, 8471, 9550, 1959, 1201, 4298, 5273, 4023, 7555, 4519, 6162]
-Received recommendation request for user 556395
-Recommended watchlist for user 556395: [6812, 7662, 2250, 4131, 5773, 4267, 3999, 1938, 7041, 4020, 5197, 6113, 8105, 1085, 3526, 7442, 3421, 2856, 2608, 9766]
-Received recommendation request for user 422070
-Recommended watchlist for user 422070: [2500, 7287, 3072, 1372, 4549, 9207, 9623, 3707, 7159, 1162, 375, 7101, 3175, 9771, 2697, 2535, 3129, 5388, 983, 490]
-Received recommendation request for user 842578
-Recommended watchlist for user 842578: [7086, 4062, 695, 8441, 7783, 8244, 3646, 5356, 8, 2773, 7961, 2535, 2196, 5648, 654, 8101, 1508, 6375, 7698, 1519]
-Received recommendation request for user 646417
-Recommended watchlist for user 646417: [4640, 2930, 4444, 1900, 3653, 7706, 4423, 5121, 2170, 8255, 759, 947, 2750, 6270, 4708, 5004, 7934, 5508, 6234, 5239]
-Received recommendation request for user 286448
-Recommended watchlist for user 286448: [5596, 9254, 4412, 9764, 1546, 7524, 185, 2370, 3569, 175, 9433, 9809, 5707, 8434, 5324, 4777, 9807, 273, 9911, 9669]
-Received recommendation request for user 372741
-Recommended watchlist for user 372741: [397, 7173, 2709, 1705, 5364, 718, 652, 2810, 9608, 5332, 2531, 8350, 955, 2493, 6327, 1765, 7434, 5869, 627, 5953]
-Received recommendation request for user 815981
-Recommended watchlist for user 815981: [8546, 9219, 7688, 2429, 8050, 4702, 8768, 5839, 8061, 8753, 9402, 8797, 9483, 3506, 2499, 4129, 2718, 4925, 4280, 4388]
-Received recommendation request for user 643309
-Recommended watchlist for user 643309: [7206, 8718, 6766, 6999, 7443, 8674, 6458, 574, 2836, 5106, 5399, 234, 8052, 4585, 4226, 5607, 4082, 8688, 8140, 7469]
-Received recommendation request for user 49087
-Recommended watchlist for user 49087: [3313, 540, 813, 9370, 5343, 8711, 8020, 9786, 6526, 509, 346, 998, 5350, 8058, 1217, 5138, 1651, 1386, 1390, 4328]
-Received recommendation request for user 482593
-Recommended watchlist for user 482593: [2279, 1781, 6397, 3422, 676, 3245, 2488, 1652, 8355, 8510, 8571, 9892, 3747, 6820, 1164, 9261, 9085, 362, 154, 5388]
-Received recommendation request for user 494062
-Recommended watchlist for user 494062: [6599, 3257, 2089, 7450, 8907, 1515, 2823, 7124, 9217, 9080, 9848, 4787, 6576, 8314, 5212, 7088, 3078, 574, 3520, 7705]
-Received recommendation request for user 345073
-Recommended watchlist for user 345073: [4361, 8374, 6518, 347, 2681, 9651, 1960, 7781, 6480, 2269, 6102, 1206, 2850, 4137, 9787, 2280, 7261, 4999, 6767, 827]
-Received recommendation request for user 17696
-Recommended watchlist for user 17696: [6011, 1406, 200, 7423, 6744, 2894, 5778, 2533, 5307, 3894, 6091, 2574, 9829, 9530, 4416, 8441, 4606, 5202, 3504, 81]
-Received recommendation request for user 660037
-Recommended watchlist for user 660037: [9982, 9336, 1539, 2197, 1691, 1538, 1646, 7686, 4253, 2444, 2433, 3866, 181, 8880, 3003, 971, 1584, 9110, 6005, 9431]
-Received recommendation request for user 41645
-Recommended watchlist for user 41645: [4351, 3993, 1794, 2774, 3437, 3104, 7813, 9990, 5780, 6018, 9259, 9119, 8261, 4254, 8628, 8545, 2123, 2207, 5941, 4115]
-Received recommendation request for user 114462
-Recommended watchlist for user 114462: [2472, 6550, 694, 3161, 9925, 3681, 9511, 8667, 3142, 7432, 6994, 7915, 7472, 6761, 3254, 2619, 8730, 1730, 5900, 5461]
-Received recommendation request for user 255918
-Recommended watchlist for user 255918: [649, 5692, 4429, 6245, 3851, 7610, 644, 9806, 2032, 50, 4620, 898, 6418, 1007, 6723, 7479, 4996, 4161, 7603, 9428]
-Received recommendation request for user 5064
-Recommended watchlist for user 5064: [5446, 1337, 5454, 7649, 3640, 3508, 1877, 4714, 3989, 3007, 2077, 4608, 1216, 6101, 3089, 2970, 670, 8910, 7023, 6242]
-Received recommendation request for user 18098
-Recommended watchlist for user 18098: [2985, 7467, 1587, 8283, 8044, 7104, 3670, 4271, 6745, 1606, 7549, 7333, 2201, 198, 7554, 1678, 839, 5017, 8603, 210]
-Received recommendation request for user 715620
-Recommended watchlist for user 715620: [6553, 4882, 1119, 9149, 2465, 2945, 8296, 8792, 2274, 4736, 4821, 4667, 3474, 2248, 8804, 1621, 5224, 7365, 983, 7142]
-Received recommendation request for user 169416
-Recommended watchlist for user 169416: [9263, 2441, 71, 7144, 4465, 9484, 4640, 9120, 3742, 9569, 918, 7917, 9772, 4208, 3228, 1206, 8382, 8073, 6709, 5343]
-Received recommendation request for user 633256
-Recommended watchlist for user 633256: [5895, 7176, 39, 2914, 7791, 2393, 6008, 5709, 2549, 222, 7521, 7226, 2047, 3742, 7576, 3918, 1660, 5186, 4174, 9739]
-Received recommendation request for user 341853
-Recommended watchlist for user 341853: [9963, 9501, 349, 4556, 371, 9290, 8283, 7471, 7013, 2853, 1999, 6213, 1829, 6440, 4102, 6152, 5145, 1126, 8112, 3171]
-Received recommendation request for user 280270
-Recommended watchlist for user 280270: [2833, 2851, 6946, 6000, 602, 1288, 2885, 5640, 8066, 7120, 2930, 8640, 7006, 4632, 957, 1450, 5292, 7595, 8094, 2981]
-Received recommendation request for user 625099
-Recommended watchlist for user 625099: [9290, 5359, 3562, 8462, 15, 5161, 7847, 1890, 2742, 443, 2658, 1306, 4688, 9937, 5908, 9483, 6883, 6218, 4931, 1332]
-Received recommendation request for user 223872
-Recommended watchlist for user 223872: [750, 4523, 346, 2482, 6330, 4437, 9462, 3800, 6948, 3559, 5032, 8908, 9872, 2383, 3188, 9040, 8198, 180, 5218, 8278]
-Received recommendation request for user 498919
-Recommended watchlist for user 498919: [3827, 7033, 2594, 7247, 8925, 2670, 4451, 3724, 3110, 8901, 3457, 7267, 1291, 1922, 7272, 376, 706, 8302, 3194, 1780]
-Received recommendation request for user 91192
-Recommended watchlist for user 91192: [8134, 753, 1181, 9759, 7766, 7300, 7904, 67, 6628, 605, 8257, 6251, 2155, 5709, 4652, 9847, 2422, 7314, 8913, 7312]
-Received recommendation request for user 328884
-Recommended watchlist for user 328884: [9530, 4818, 820, 4009, 3308, 8680, 3873, 4219, 8730, 6032, 1917, 6370, 9357, 2925, 7137, 3821, 5569, 5945, 5232, 1581]
-Received recommendation request for user 423657
-Recommended watchlist for user 423657: [1023, 8297, 9239, 4424, 9739, 9299, 923, 6911, 1075, 5469, 9982, 9198, 9773, 9273, 7533, 2433, 4830, 8552, 4157, 4372]
-Received recommendation request for user 589644
-Recommended watchlist for user 589644: [7892, 1328, 5203, 1940, 5426, 7513, 8158, 6671, 6877, 5482, 8104, 5918, 9157, 1638, 7827, 1214, 1454, 3665, 5743, 8758]
-Received recommendation request for user 876375
-Recommended watchlist for user 876375: [5172, 9705, 5098, 80, 5533, 9948, 9237, 9958, 486, 6922, 8367, 6987, 3905, 2522, 7160, 2701, 7012, 1718, 4226, 4906]
-Received recommendation request for user 853587
-Recommended watchlist for user 853587: [6909, 9377, 2489, 4526, 5478, 1375, 6551, 1156, 5485, 8477, 4032, 5738, 2902, 8432, 3208, 6283, 322, 132, 1823, 9392]
+Received recommendation request for user 595035
+Recommended watchlist for user 595035: [7591, 5916, 9215, 6469, 1325, 4708, 855, 7703, 2593, 53, 6835, 2224, 8140, 1325, 2021, 3145, 4844, 3860, 726, 6795]
+Received recommendation request for user 170668
+Recommended watchlist for user 170668: [9844, 3135, 5767, 8361, 5204, 5096, 3023, 2044, 4325, 419, 8770, 9042, 9999, 3890, 3541, 9013, 1873, 7209, 4067, 8027]
+Received recommendation request for user 410316
+Recommended watchlist for user 410316: [1681, 7899, 8023, 1029, 1895, 9257, 3069, 7794, 2722, 555, 2969, 2506, 5530, 1188, 5145, 7731, 2110, 7534, 6721, 1389]
+Received recommendation request for user 101938
+Recommended watchlist for user 101938: [2132, 5924, 8377, 8158, 6329, 4708, 4413, 8211, 4778, 9097, 9518, 600, 1747, 8817, 7781, 8945, 7252, 8876, 1962, 8228]
+Received recommendation request for user 797989
+Recommended watchlist for user 797989: [578, 6873, 4677, 3244, 260, 5175, 5966, 5090, 4940, 2510, 7490, 4128, 1486, 3475, 5999, 2349, 1921, 8322, 352, 5551]
+Received recommendation request for user 576460
+Recommended watchlist for user 576460: [5222, 6298, 887, 8121, 6459, 4990, 2802, 9369, 509, 2897, 5410, 5937, 9704, 6747, 6786, 4877, 2364, 6647, 6417, 9808]
+Received recommendation request for user 319868
+Recommended watchlist for user 319868: [4744, 5679, 2508, 5284, 489, 4312, 9650, 2841, 2345, 7216, 7978, 8796, 5589, 1646, 2893, 9983, 4772, 406, 8100, 4155]
+Received recommendation request for user 698910
+Recommended watchlist for user 698910: [7060, 1012, 3546, 6550, 1779, 5991, 633, 7037, 8288, 5797, 1660, 7721, 2279, 6194, 9909, 3797, 7769, 1522, 1922, 3815]
+Received recommendation request for user 368698
+Recommended watchlist for user 368698: [3072, 2740, 688, 1927, 1940, 6347, 9668, 1493, 884, 2874, 9217, 7036, 5725, 9367, 406, 7820, 8873, 8326, 4781, 320]
+Received recommendation request for user 825928
+Recommended watchlist for user 825928: [5503, 1659, 3116, 7146, 7197, 6573, 6710, 1983, 3127, 3142, 6999, 8345, 3256, 6035, 4533, 2111, 7394, 3703, 5450, 1525]
+Received recommendation request for user 631484
+Recommended watchlist for user 631484: [980, 1941, 1147, 2689, 7122, 7767, 6765, 3071, 9010, 5119, 854, 3194, 3077, 3334, 6780, 106, 3435, 318, 897, 3819]
+Received recommendation request for user 406289
+Recommended watchlist for user 406289: [6267, 2584, 3195, 3362, 5829, 3107, 2060, 2166, 8319, 8900, 3277, 131, 3523, 6280, 7181, 5971, 3108, 2297, 4402, 758]
+Received recommendation request for user 447251
+Recommended watchlist for user 447251: [3384, 2632, 1342, 5987, 3126, 6793, 1221, 4308, 3817, 8118, 5373, 2911, 6418, 456, 9977, 579, 9095, 1110, 6733, 4682]
+Received recommendation request for user 575385
+Recommended watchlist for user 575385: [3592, 6585, 3313, 7341, 470, 2849, 2256, 7308, 8408, 6791, 6783, 1327, 3510, 2347, 1255, 3663, 4047, 8356, 7333, 3468]
+Received recommendation request for user 550817
+Recommended watchlist for user 550817: [164, 8348, 3844, 2734, 7107, 5951, 4963, 8045, 1517, 4271, 6104, 8227, 6392, 2303, 8949, 1759, 5933, 9582, 6844, 8036]
+Received recommendation request for user 419708
+Recommended watchlist for user 419708: [2704, 365, 6624, 7433, 5185, 3954, 525, 6555, 8187, 7303, 7547, 4450, 5742, 4095, 8220, 1878, 5039, 4137, 7189, 3804]
+Received recommendation request for user 288359
+Recommended watchlist for user 288359: [9921, 3516, 3746, 5232, 5425, 2300, 6189, 9685, 5088, 8096, 6514, 8869, 5893, 1347, 5666, 4316, 5841, 9844, 7735, 2381]
+Received recommendation request for user 220086
+Recommended watchlist for user 220086: [4333, 597, 4005, 8851, 998, 665, 9124, 7406, 4573, 4294, 2735, 8211, 8589, 3925, 2414, 5267, 3018, 9262, 2215, 8981]
+Received recommendation request for user 105848
+Recommended watchlist for user 105848: [8025, 7321, 5844, 820, 9133, 6841, 5673, 5949, 736, 1179, 9998, 6479, 3119, 5015, 6660, 9101, 7232, 2491, 3470, 3895]
+Received recommendation request for user 335345
+Recommended watchlist for user 335345: [1560, 4359, 3449, 5030, 5981, 6129, 4420, 4332, 2328, 1989, 5715, 7296, 5424, 9835, 5454, 3476, 9118, 8624, 663, 5140]
+Received recommendation request for user 139520
+Recommended watchlist for user 139520: [6365, 1959, 9452, 1458, 1371, 4265, 8390, 9893, 9848, 4609, 1325, 9222, 5081, 1692, 4704, 3101, 558, 1262, 4098, 3278]
+Received recommendation request for user 427301
+Recommended watchlist for user 427301: [5993, 1706, 5178, 9999, 2427, 7129, 2899, 6898, 7652, 2182, 210, 2130, 9257, 2336, 8998, 2542, 1669, 1460, 9563, 3073]
+Received recommendation request for user 199476
+Recommended watchlist for user 199476: [8713, 2927, 8926, 9880, 273, 8149, 2836, 9719, 2957, 1883, 7953, 6878, 5417, 6123, 6473, 5537, 2060, 8456, 6274, 2635]
+Received recommendation request for user 300135
+Recommended watchlist for user 300135: [8368, 9581, 5330, 6948, 8400, 7440, 7472, 116, 3162, 5085, 2505, 3675, 5766, 4068, 5460, 949, 6763, 4975, 1947, 9250]
+Received recommendation request for user 791272
+Recommended watchlist for user 791272: [6413, 6746, 6968, 5990, 1719, 2558, 9764, 8400, 4699, 7190, 3919, 9386, 8611, 4388, 6278, 3354, 7602, 576, 8458, 5897]
+Received recommendation request for user 793825
+Recommended watchlist for user 793825: [3785, 918, 7471, 5090, 333, 4772, 2380, 4330, 1846, 1691, 8732, 5471, 8071, 4551, 7847, 1369, 4363, 850, 766, 9109]
+Received recommendation request for user 746275
+Recommended watchlist for user 746275: [656, 6429, 9336, 7063, 8805, 983, 2781, 4077, 5205, 3072, 1115, 8099, 772, 7177, 5205, 7977, 4934, 6422, 9550, 89]
+Received recommendation request for user 299267
+Recommended watchlist for user 299267: [1229, 2519, 9217, 9829, 446, 3338, 7758, 9425, 2253, 6937, 7363, 2894, 9507, 5866, 7095, 791, 731, 3654, 6977, 2073]
+Received recommendation request for user 135192
+Recommended watchlist for user 135192: [4769, 960, 5709, 2065, 8816, 2023, 8038, 1620, 9311, 1139, 6058, 1507, 7107, 3734, 2442, 5763, 6986, 2295, 7646, 2699]
+Received recommendation request for user 586312
+Recommended watchlist for user 586312: [5811, 7243, 5519, 8272, 2711, 2692, 4334, 9554, 8687, 7627, 5021, 5942, 5689, 7956, 7069, 1535, 4757, 4542, 7733, 3685]
+Received recommendation request for user 288167
+Recommended watchlist for user 288167: [3256, 6049, 9096, 2215, 8473, 868, 9734, 75, 5787, 4654, 8221, 559, 3147, 8442, 8538, 9426, 5490, 5999, 2515, 8024]
+Received recommendation request for user 266360
+Recommended watchlist for user 266360: [7192, 3966, 7982, 3899, 9260, 652, 219, 2761, 6739, 6580, 8909, 2143, 1253, 2518, 9890, 1373, 6422, 842, 6346, 3825]
+Received recommendation request for user 58037
+Recommended watchlist for user 58037: [3304, 887, 9634, 8382, 3769, 9060, 550, 4197, 9492, 9297, 1970, 6799, 8431, 3407, 9649, 6103, 5509, 6157, 8086, 5139]
+Received recommendation request for user 138636
+Recommended watchlist for user 138636: [3378, 5481, 2208, 79, 504, 7488, 4762, 7440, 4857, 1763, 3749, 1853, 2161, 5377, 6257, 5455, 6009, 4375, 4855, 6030]
+Received recommendation request for user 379067
+Recommended watchlist for user 379067: [5776, 9386, 8545, 1799, 7942, 7889, 7245, 437, 2615, 5109, 8109, 8022, 4774, 190, 5352, 4340, 9062, 6189, 248, 7955]
+Received recommendation request for user 755862
+Recommended watchlist for user 755862: [1941, 980, 4102, 3002, 5508, 3007, 6101, 7307, 5007, 2937, 2696, 2689, 4214, 2649, 1211, 6301, 2682, 318, 1147, 6780]
+Received recommendation request for user 814862
+Recommended watchlist for user 814862: [81, 1680, 9663, 1815, 5813, 4596, 1616, 2874, 9503, 7470, 6738, 1415, 1908, 3588, 3029, 2230, 3267, 3941, 2631, 4022]
+Received recommendation request for user 206940
+Recommended watchlist for user 206940: [585, 1951, 5062, 2215, 6957, 5168, 2659, 996, 1008, 6327, 238, 856, 7379, 210, 4914, 641, 6550, 3617, 2230, 2565]
+Received recommendation request for user 574917
+Recommended watchlist for user 574917: [2056, 2367, 946, 311, 800, 1619, 8327, 4198, 2517, 5840, 2051, 9362, 4477, 5575, 7632, 5906, 2578, 397, 7970, 3931]
+Received recommendation request for user 131926
+Recommended watchlist for user 131926: [5838, 8791, 3630, 1767, 2946, 642, 3818, 7110, 212, 1600, 9766, 7946, 4994, 206, 6028, 9925, 985, 5287, 3132, 215]
+Received recommendation request for user 296560
+Recommended watchlist for user 296560: [4144, 8833, 4589, 4683, 1649, 4888, 3024, 4266, 1562, 5913, 5204, 2828, 5174, 4584, 5747, 520, 4632, 3787, 7217, 6660]
+Received recommendation request for user 450623
+Recommended watchlist for user 450623: [2795, 1675, 4949, 3025, 4850, 4539, 7951, 8639, 74, 6016, 6294, 9254, 5453, 5849, 9047, 5443, 8259, 7018, 3969, 3875]
+Received recommendation request for user 389829
+Recommended watchlist for user 389829: [8115, 1664, 2396, 4191, 3561, 957, 4449, 7393, 5129, 8051, 5691, 8687, 473, 9235, 9240, 7609, 2166, 5913, 8580, 7313]
+Received recommendation request for user 389214
+Recommended watchlist for user 389214: [9878, 5278, 2255, 4316, 6601, 381, 7466, 6828, 75, 5740, 7773, 2687, 2486, 11, 7796, 773, 1790, 2983, 9587, 9332]
+Received recommendation request for user 848697
+Recommended watchlist for user 848697: [9378, 6494, 1508, 9291, 493, 8822, 7437, 583, 1747, 3248, 5896, 3819, 4743, 8429, 4947, 1364, 6073, 6299, 3157, 2655]
+Received recommendation request for user 568804
+Recommended watchlist for user 568804: [4431, 7109, 7809, 5775, 8244, 8657, 5483, 1957, 7063, 2244, 8147, 6758, 7630, 6769, 2075, 4862, 9056, 7585, 7858, 414]
+Received recommendation request for user 457104
+Recommended watchlist for user 457104: [8904, 2275, 3720, 9220, 1861, 3977, 3905, 288, 4324, 248, 9737, 6848, 7690, 9763, 5539, 3709, 6721, 8467, 2043, 1409]
+Received recommendation request for user 243555
+Recommended watchlist for user 243555: [2643, 6163, 9478, 1256, 6943, 489, 6523, 5524, 4455, 3252, 3036, 7594, 4815, 5628, 8451, 9794, 2490, 7066, 9349, 3130]
+Received recommendation request for user 124076
+Recommended watchlist for user 124076: [4807, 5933, 5736, 4731, 1550, 3582, 8266, 788, 2648, 2819, 6390, 9798, 8075, 1426, 6527, 7038, 9769, 6100, 786, 8453]
+Received recommendation request for user 654661
+Recommended watchlist for user 654661: [9364, 6965, 1933, 9743, 6446, 6497, 5440, 5775, 3989, 3957, 6253, 682, 8464, 2191, 7179, 7155, 6876, 2573, 8614, 3227]
+Received recommendation request for user 378387
+Recommended watchlist for user 378387: [2834, 1523, 3470, 6153, 6201, 8391, 3927, 2393, 7905, 4359, 4299, 5002, 7496, 893, 7905, 8534, 8723, 2607, 5867, 4583]
+Received recommendation request for user 786969
+Recommended watchlist for user 786969: [7254, 6050, 9041, 3105, 2666, 4627, 6702, 5670, 2054, 8839, 7225, 9555, 5793, 9636, 8705, 1054, 4512, 8580, 9103, 4351]
+Received recommendation request for user 731019
+Recommended watchlist for user 731019: [892, 2277, 7084, 8817, 1402, 3236, 6773, 1690, 9930, 7631, 4293, 8900, 3787, 8389, 5883, 592, 3199, 5918, 9004, 1786]
+Received recommendation request for user 190781
+Recommended watchlist for user 190781: [5915, 6121, 7768, 4939, 6976, 9071, 5564, 4234, 233, 8083, 3569, 2662, 961, 8187, 5296, 8989, 3142, 6270, 8359, 3483]
+Received recommendation request for user 122401
+Recommended watchlist for user 122401: [7909, 2268, 9797, 639, 5167, 4346, 1107, 1348, 6937, 8163, 4181, 7156, 1456, 5299, 6279, 2680, 4484, 3423, 2901, 2187]
+Received recommendation request for user 198142
+Recommended watchlist for user 198142: [7085, 3879, 9486, 5771, 3518, 2821, 6380, 2166, 9734, 4075, 5491, 1183, 4542, 1140, 814, 6607, 4860, 2612, 7170, 2170]
+Received recommendation request for user 546180
+Recommended watchlist for user 546180: [2676, 4966, 4336, 756, 1823, 6352, 548, 8591, 2403, 2740, 354, 8892, 9405, 2409, 7805, 9633, 4922, 815, 9309, 1434]
+Received recommendation request for user 745049
+Recommended watchlist for user 745049: [7869, 5713, 1712, 6581, 6547, 1679, 194, 8553, 5168, 8837, 155, 2804, 7426, 6299, 321, 7101, 4595, 3064, 9049, 7964]
+Received recommendation request for user 569347
+Recommended watchlist for user 569347: [4088, 2775, 3007, 8268, 2665, 7018, 2796, 7542, 9036, 5560, 9060, 2612, 9239, 7572, 1209, 278, 2860, 2310, 3005, 4235]
+Received recommendation request for user 186435
+Recommended watchlist for user 186435: [2733, 6296, 3943, 7246, 8578, 1540, 2604, 9581, 5652, 8515, 4119, 5682, 5082, 2518, 8166, 5831, 6284, 9539, 1158, 6805]
+Received recommendation request for user 524604
+Recommended watchlist for user 524604: [9889, 5867, 2259, 5884, 7134, 3014, 7358, 826, 7350, 8539, 33, 7180, 3443, 4881, 4398, 1284, 3516, 5640, 3446, 746]
+Received recommendation request for user 113315
+Recommended watchlist for user 113315: [615, 5861, 6369, 4650, 3958, 8434, 2096, 8097, 2204, 2965, 7039, 9104, 1455, 6980, 1436, 8116, 7871, 6567, 5234, 3509]
+Received recommendation request for user 215296
+Recommended watchlist for user 215296: [9335, 9710, 2633, 9574, 8533, 5842, 1689, 5644, 5202, 7257, 8122, 4235, 9495, 7253, 8026, 2703, 3706, 345, 8728, 281]
+Received recommendation request for user 798729
+Recommended watchlist for user 798729: [4376, 5476, 3931, 937, 5500, 4190, 7629, 5663, 3818, 2, 7865, 7765, 4482, 6628, 2111, 6996, 268, 713, 9113, 5454]
+Received recommendation request for user 696799
+Recommended watchlist for user 696799: [6975, 8050, 2433, 8024, 5764, 2471, 793, 7719, 7431, 8923, 5130, 4129, 7754, 1094, 9277, 3517, 3783, 7557, 8446, 7783]
+Received recommendation request for user 262112
+Recommended watchlist for user 262112: [6152, 7095, 5393, 1672, 715, 8865, 3598, 7326, 2243, 3886, 1730, 3254, 1351, 3980, 5804, 3523, 3816, 5979, 4175, 2620]
+Received recommendation request for user 744557
+Recommended watchlist for user 744557: [9887, 4269, 2084, 511, 4364, 3873, 3381, 1725, 3660, 4420, 3653, 4971, 3009, 655, 208, 3182, 517, 3845, 5377, 8120]
+Received recommendation request for user 259364
+Recommended watchlist for user 259364: [6097, 5614, 7492, 8118, 2040, 5740, 656, 1041, 9369, 3093, 5418, 1219, 7221, 8684, 3452, 9474, 2264, 9143, 9387, 5956]
+Received recommendation request for user 835656
+Recommended watchlist for user 835656: [980, 1382, 8306, 580, 2285, 7382, 6689, 3504, 8552, 1171, 822, 299, 8486, 6002, 1718, 8770, 4381, 777, 5145, 84]
+Received recommendation request for user 652108
+Recommended watchlist for user 652108: [6920, 290, 308, 5995, 708, 2768, 5704, 2893, 3595, 7897, 7467, 565, 7267, 2731, 2770, 9547, 4984, 1997, 9552, 8856]
+Received recommendation request for user 52017
+Recommended watchlist for user 52017: [6684, 6787, 2736, 677, 8606, 1253, 9180, 965, 6987, 9384, 5330, 8834, 3302, 6210, 1046, 1168, 5463, 8708, 2459, 8982]
+Received recommendation request for user 841213
+Recommended watchlist for user 841213: [3723, 5727, 8046, 3855, 6314, 698, 889, 884, 1614, 9224, 5253, 6298, 1046, 1309, 5857, 2301, 2598, 1352, 8360, 2450]
+Received recommendation request for user 447324
+Recommended watchlist for user 447324: [2625, 5869, 680, 4899, 9731, 792, 7853, 3019, 7706, 1289, 6457, 3115, 4802, 8831, 185, 7914, 9831, 7076, 8206, 9610]
+Received recommendation request for user 754800
+Recommended watchlist for user 754800: [5547, 9242, 8910, 2811, 2409, 7649, 3268, 9847, 2633, 2830, 9338, 5241, 8607, 5961, 5330, 3783, 2849, 5197, 4631, 9887]
+Received recommendation request for user 227406
+Recommended watchlist for user 227406: [6602, 6909, 8362, 98, 2088, 6197, 4652, 8713, 4413, 4744, 9061, 5615, 3581, 8197, 8749, 1063, 275, 6221, 896, 3560]
+Received recommendation request for user 59425
+Recommended watchlist for user 59425: [2225, 7083, 5828, 6069, 2683, 2452, 4678, 3115, 8711, 6578, 4814, 9480, 2650, 302, 5768, 1253, 9243, 7762, 8903, 2128]
+Received recommendation request for user 413703
+Recommended watchlist for user 413703: [4043, 3340, 3808, 5523, 405, 4622, 1386, 2231, 2794, 1876, 5657, 9012, 5817, 7627, 5942, 8965, 5750, 9205, 2080, 3648]
+Received recommendation request for user 480586
+Recommended watchlist for user 480586: [5164, 6611, 9403, 5905, 2490, 8619, 4297, 5686, 9045, 3586, 9408, 4789, 8795, 1555, 7564, 1444, 3103, 9352, 4106, 7490]
+Received recommendation request for user 673609
+Recommended watchlist for user 673609: [5753, 3429, 6048, 8633, 2491, 8073, 214, 4078, 5150, 7397, 3458, 8041, 3891, 3822, 8787, 942, 3019, 7337, 3293, 8888]
+Received recommendation request for user 790242
+Recommended watchlist for user 790242: [2064, 9535, 8782, 3315, 3035, 3807, 9347, 5082, 2985, 2136, 1861, 4938, 4851, 625, 5249, 7570, 2263, 356, 2354, 4791]
+Received recommendation request for user 383506
+Recommended watchlist for user 383506: [493, 5349, 7218, 1386, 7355, 8367, 1520, 4055, 9584, 5155, 6877, 8004, 463, 8343, 1415, 934, 2779, 7632, 2174, 538]
+Received recommendation request for user 372423
+Recommended watchlist for user 372423: [1357, 6035, 422, 9325, 2420, 5214, 6780, 1036, 2378, 8499, 5521, 7551, 2311, 6443, 5143, 7492, 1369, 7268, 4932, 7452]
+Received recommendation request for user 839561
+Recommended watchlist for user 839561: [5950, 3403, 5086, 6910, 282, 967, 6468, 2743, 7186, 5317, 9174, 519, 5734, 7314, 5366, 2653, 6899, 9559, 2719, 1783]
+Received recommendation request for user 853444
+Recommended watchlist for user 853444: [9342, 1257, 6574, 871, 3606, 7367, 696, 6175, 1473, 2131, 6383, 9774, 7891, 2133, 1737, 3900, 4886, 2173, 7049, 3178]
+Received recommendation request for user 531532
+Recommended watchlist for user 531532: [4187, 2879, 527, 3274, 140, 4149, 1836, 3140, 7006, 7094, 8107, 9121, 6693, 4949, 4346, 2299, 3348, 9963, 732, 8926]
+Received recommendation request for user 410676
+Recommended watchlist for user 410676: [9969, 9738, 1226, 3483, 6428, 615, 7230, 4304, 3784, 193, 2072, 420, 1398, 5724, 9972, 4872, 9079, 1431, 8233, 4471]
+Received recommendation request for user 866885
+Recommended watchlist for user 866885: [6553, 9400, 4179, 1017, 9776, 2343, 6191, 4182, 7274, 8603, 7740, 3890, 5696, 1590, 8332, 5286, 1333, 5524, 1461, 7549]
+Received recommendation request for user 867498
+Recommended watchlist for user 867498: [746, 107, 2887, 7640, 2979, 8383, 3422, 2003, 7073, 8939, 7147, 478, 1066, 5615, 2316, 6596, 7371, 9442, 7976, 4052]
+Received recommendation request for user 571477
+Recommended watchlist for user 571477: [1979, 8380, 6181, 4176, 2693, 5710, 9560, 7540, 6897, 7309, 8926, 6287, 9978, 3651, 4418, 4671, 5702, 1220, 7639, 8223]
+Received recommendation request for user 293749
+Recommended watchlist for user 293749: [2461, 298, 2074, 5773, 9392, 6853, 2332, 9135, 1997, 2842, 4544, 9097, 4085, 3683, 1803, 5198, 3022, 8039, 3128, 2092]
+Received recommendation request for user 97829
+Recommended watchlist for user 97829: [9224, 8899, 2442, 2844, 8954, 9351, 6921, 9482, 4661, 7146, 9380, 8373, 4791, 766, 135, 1026, 2265, 2836, 1116, 134]
+Received recommendation request for user 333746
+Recommended watchlist for user 333746: [4082, 5036, 2530, 5568, 7544, 4526, 805, 6423, 8701, 3195, 7038, 3952, 4265, 4916, 3307, 4324, 9818, 1070, 7438, 163]
+Received recommendation request for user 637583
+Recommended watchlist for user 637583: [782, 9770, 3463, 9103, 6832, 2721, 6743, 3687, 7279, 2947, 3075, 977, 8488, 5782, 4305, 6500, 9089, 6323, 7121, 3520]
+Received recommendation request for user 248554
+Recommended watchlist for user 248554: [1435, 7816, 1568, 9286, 2846, 7026, 8774, 1846, 8657, 3065, 5621, 5355, 7583, 7597, 7770, 932, 6202, 8750, 3955, 7406]
+Received recommendation request for user 166913
+Recommended watchlist for user 166913: [6302, 1901, 7631, 2231, 6052, 2446, 911, 1444, 5373, 1389, 7234, 9353, 7669, 1645, 5144, 1618, 3073, 4053, 1357, 1039]
+Received recommendation request for user 495871
+Recommended watchlist for user 495871: [9757, 8670, 2703, 5776, 2832, 6898, 5851, 5913, 4263, 9871, 7789, 1911, 1730, 2573, 5782, 8825, 757, 7106, 1327, 4986]
+Received recommendation request for user 423325
+Recommended watchlist for user 423325: [8675, 3923, 8793, 1059, 1424, 3026, 4781, 482, 8414, 4631, 3554, 9114, 8705, 8422, 9524, 1801, 977, 9641, 788, 6527]
+Received recommendation request for user 500730
+Recommended watchlist for user 500730: [4238, 49, 3500, 6303, 1119, 2345, 1751, 6651, 1283, 3807, 1242, 3150, 6351, 5081, 2148, 3578, 1368, 7094, 9130, 1706]
