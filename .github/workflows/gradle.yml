@@ -4,10 +4,8 @@
 name: Java CI with Gradle
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  schedule:
+    - cron: "*/15 * * * *"
 
 jobs:
 
@@ -28,20 +26,12 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    # Make sure to stop any ongoing deamons prior to rerunning and deploying new machine
-    # - name: Stop ongoing Gradle Deamons in order to rerun
-    #   run: ./gradlew --stop
-
     - name: Cache Gradle packages
       uses: actions/cache@v2
       with:
         path: ~/.gradle/caches
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}  
         restore-keys: ${{ runner.os }}-gradle
-    
-    # change soon
-    # - name: Train model with Gradle
-    #   run: ./gradlew integrationTask
 
     - name: Build with Gradle
       run: ./gradlew build
