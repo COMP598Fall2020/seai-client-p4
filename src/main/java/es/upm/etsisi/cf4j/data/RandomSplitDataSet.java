@@ -149,6 +149,11 @@ public class RandomSplitDataSet implements DataSet {
       String itemId = s[1];
       double rating = Double.parseDouble(s[2]);
 
+      if (itemId == "-1") {
+        //skip
+        continue;
+      }
+
       // Filtering entries.
       if (!testUsersFiltered.containsKey(userId)) {
         testUsersFiltered.put(userId, rand.nextFloat() <= testUsersPercent);
