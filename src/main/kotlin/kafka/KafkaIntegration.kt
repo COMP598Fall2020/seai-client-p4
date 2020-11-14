@@ -29,7 +29,7 @@ val kafkaServer = "fall2020-comp598.cs.mcgill.ca:9092"
 val messages = Collections.synchronizedList(ArrayList<List<String>>())
 val batch_size = 1000 // number of ratings to collect before stopping the service
 val formatter = DateTimeFormatter.BASIC_ISO_DATE
-val current = LocalDateTime.now().format(formatter)
+var current = LocalDateTime.now().format(formatter)
 //val current = "20201103" (can be used to set maximum date)
 val filename = "data/ratings.csv"
 val moviesFile = "data/movies.csv"
@@ -58,8 +58,12 @@ class KafkaIntegration() {
 
 
             // Will continue collecting ratings data from Kafka stream until reaches batch_size or reaches a specific date
-            while (messages.size < batch_size && pointer_date.toInt() <= current.toInt()) {
-            }
+            ///while (messages.size < batch_size && pointer_date.toInt() <= current.toInt()) {
+            //}
+
+            //Run for 1 minutes
+            Thread.sleep(60_000)
+            current = "0"
 
             println("Writing to file...")
             for (info in messages) {
