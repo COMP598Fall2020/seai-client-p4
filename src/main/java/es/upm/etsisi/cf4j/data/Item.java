@@ -131,7 +131,8 @@ public class Item implements Serializable {
    */
   public void addRating(int userIndex, double rating) {
     if (!this.usersRatings.add(userIndex, rating))
-      throw new IllegalArgumentException("Provided rating already exist in item: " + id);
+      return;
+      //throw new IllegalArgumentException("Provided rating already exist in item: " + id);
 
     min = Math.min(rating, min);
     max = Math.max(rating, max);

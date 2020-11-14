@@ -149,7 +149,7 @@ public class RandomSplitDataSet implements DataSet {
       String itemId = s[1];
       double rating = Double.parseDouble(s[2]);
 
-      if (itemId == "-1") {
+      if (Integer.parseInt(itemId) < 0 || Integer.parseInt(userId) < 0) {
         //skip
         continue;
       }
