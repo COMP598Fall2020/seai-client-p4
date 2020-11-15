@@ -7,12 +7,12 @@ on:
   # schedule:
 
   #   # trigger build every 15 minutes
-  #   - cron: "*/15 * * * *"
+     - cron: "*/60 * * * *"
 
   # had to temporarily stop the scheduled automatic builds because of Action plan limitations
-  push:
-    branches:
-      - main
+  #push:
+  #  branches:
+  #    - main
 
 jobs:
 
