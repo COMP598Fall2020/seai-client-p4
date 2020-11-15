@@ -4,10 +4,15 @@
 name: Java CI with Gradle
 
 on:
-  schedule:
+  # schedule:
 
-    # trigger build every 15 minutes
-    - cron: "*/15 * * * *"
+  #   # trigger build every 15 minutes
+  #   - cron: "*/15 * * * *"
+
+  # had to temporarily stop the scheduled automatic builds because of Action plan limitations
+  push:
+    branches:
+      - main
 
 jobs:
 
