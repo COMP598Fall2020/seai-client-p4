@@ -32,6 +32,8 @@ val formatter = DateTimeFormatter.BASIC_ISO_DATE
 var current = LocalDateTime.now().format(formatter)
 //val current = "20201103" (can be used to set maximum date)
 val filename = "data/ratings.csv"
+val watch_data_filename = "data/watch_data.csv"
+val rec_data_filename = "data/rec_data.csv"
 val moviesFile = "data/movies.csv"
 
 var pointer_date = "0"
@@ -43,7 +45,10 @@ class KafkaIntegration() {
         // Collects up to batch_size amount of ratings data from the Kafka Stream. Will also stop when it passes "current" date.
         // Appends all ratings data collected to data/ratings.csv
 
-        var fileWriter: FileWriter? = null; try {
+        var fileWriter: FileWriter? = null;
+        var fileWriter2: FileWriter? = null;
+        var fileWriter3: FileWriter? = null;
+        try {
 
             if (File(filename).exists()) {
                 fileWriter = FileWriter(filename, true)
@@ -52,6 +57,22 @@ class KafkaIntegration() {
                 fileWriter = FileWriter(filename, true)
                 fileWriter.append("userID, movieID, movieTitle, rating")
                 fileWriter.append('\n')
+            }
+            if (File(watch_data_filename).exists()) {
+                fileWriter2 = FileWriter(watch_data_filename, true)
+            } else {
+                // if file doesn't exist, create new file and add csv headers
+                fileWriter2 = FileWriter(watch_data_filename, true)
+                fileWriter2.append("userID, movieID, movieTitle, timePoint")
+                fileWriter2.append('\n')
+            }
+            if (File(rec_data_filename).exists()) {
+                fileWriter3 = FileWriter(rec_data_filename, true)
+            } else {
+                // if file doesn't exist, create new file and add csv headers
+                fileWriter3 = FileWriter(rec_data_filename, true)
+                fileWriter3.append("timestamp, userID, result")
+                fileWriter3.append("\n")
             }
 
             attachToKafkaServerUsingKotkaClient()
@@ -92,6 +113,28 @@ class KafkaIntegration() {
                     fileWriter.append(info[5])
 
                     fileWriter.append("\n")
+                }
+                if (info[4] == "data") {
+                    fileWriter2.append(info[1])
+                    fileWriter2.append(',')
+                    fileWriter2.append(getMovieID(info[6]))
+                    fileWriter2.append(',')
+                    fileWriter2.append(getMovieID(info[6]))
+                    fileWriter2.append(',')
+                    fileWriter2.append(info[7])
+
+                    fileWriter2.append("\n")
+                }
+                if (info[2] == "recommendation") {
+                    fileWriter3.append(info[0])
+                    fileWriter3.append(',')
+                    fileWriter3.append(info[1])
+                    fileWriter3.append(',')
+                    for (x in 8 until info.size-1){
+                        fileWriter3.append(info[x])
+                        fileWriter3.append(' ')
+                    }
+                    fileWriter3.append("\n")
                 }
             }
 
@@ -298,10 +341,7 @@ class KafkaIntegration() {
                 val msgStr = record.value()
                 val info = msgStr.split("[, /=\\n]".toRegex())
                 pointer_date = info[0].substring(0, 4) + info[0].substring(5, 7) + info[0].substring(8, 10) // Get date of current message
-                if (info[4] == "rate") {
-                    messages.add(info) // Add message to list only if is ratings data.
-                    //println(info)
-                }
+                messages.add(info) // Add message to list only if is ratings data.
             }
         }
 
