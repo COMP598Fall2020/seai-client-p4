@@ -66,7 +66,7 @@ jobs:
       uses: 1466587594/get-current-time@v2
       id: current-time
       with:
-        format: YYYY-MM-DD
+        format: YYYY-MM-DD-HH-MM
     - name: Test with environment variables
       env:
         DATE: ${{ steps.current-time.outputs.formattedTime }}
