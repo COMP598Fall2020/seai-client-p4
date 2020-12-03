@@ -3,7 +3,8 @@ FROM java:8-jdk-alpine
 COPY build/distributions/seai-client-template-1.0-SNAPSHOT.tar /usr/app/
 WORKDIR /usr/app
 EXPOSE 8082
-ENTRYPOINT ["java","-jar", "build/distributions/seai-client-template-1.0-SNAPSHOT.tar"]
+RUN tar -xvf build/distributions/seai-client-template-1.0-Snapshot.tar & cd build/distributions/seai-client-template-1.0-Snapshot 
+ENTRYPOINT ["java","-jar", "seai-client-template-1.0-SNAPSHOT.jar"]
 
 
 # docker build ... //builds image
