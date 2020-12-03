@@ -4,15 +4,16 @@
 name: Java CI with Gradle
 
 on:
-  schedule:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches:
+      - main
+  # schedule:
 
-  #   # trigger build every 15 minutes
-     - cron: "*/60 * * * *"
-
-  # had to temporarily stop the scheduled automatic builds because of Action plan limitations
-  #push:
-  #  branches:
-  #    - main
+  # #   # trigger build every 15 minutes
+  #    - cron: "*/60 * * * *"
 
 jobs:
 
@@ -60,4 +61,27 @@ jobs:
        host: fall2020-comp598-4.cs.mcgill.ca
        username: localuser
        privateKey: ${{secrets.SSH_ACTION_SECRET}}
+
+    - name: Get current date
+      id: date
+      run: echo "name=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+    - name: Test with environment variables
+      run: echo $TAG_NAME - $RELEASE_NAME
+      env:
+        TAG_NAME: daily-tag-${{ steps.date.outputs.date }}
+        RELEASE_NAME: daily-release-${{ steps.date.outputs.date }}
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}} # actions automatically generates this
+      with:
+        tag_name: ${{ steps.date.outputs.date }}
+        release_name: Release ${{ steps.date.outputs.date }}
+        body: Updated collaborative filtering model
+        draft: false
+        prerelease: false
 
