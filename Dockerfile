@@ -12,4 +12,4 @@
 
 FROM gradle:latest 
 COPY . .
-ENTRYPOINT [ "./gradlew", "build" ]
+ENTRYPOINT [ "./gradlew", "run" ]
