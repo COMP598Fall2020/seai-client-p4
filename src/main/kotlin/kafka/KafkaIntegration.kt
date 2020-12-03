@@ -63,7 +63,7 @@ class KafkaIntegration() {
             } else {
                 // if file doesn't exist, create new file and add csv headers
                 fileWriter2 = FileWriter(watch_data_filename, true)
-                fileWriter2.append("userID, movieID, movieTitle, timePoint")
+                fileWriter2.append("userID, movieID, movieTitle, timePoint, date")
                 fileWriter2.append('\n')
             }
             if (File(rec_data_filename).exists()) {
@@ -71,7 +71,7 @@ class KafkaIntegration() {
             } else {
                 // if file doesn't exist, create new file and add csv headers
                 fileWriter3 = FileWriter(rec_data_filename, true)
-                fileWriter3.append("timestamp, userID, result")
+                fileWriter3.append("timestamp, userID, result, date")
                 fileWriter3.append("\n")
             }
 
@@ -121,6 +121,8 @@ class KafkaIntegration() {
                     fileWriter2.append(getMovieID(info[6]))
                     fileWriter2.append(',')
                     fileWriter2.append(info[7])
+                    fileWriter.append(',')
+                    fileWriter.append(current)
 
                     fileWriter2.append("\n")
                 } else if (info[2] == "recommendation") {
@@ -132,6 +134,8 @@ class KafkaIntegration() {
                         fileWriter3.append(info[x])
                         fileWriter3.append(' ')
                     }
+                    fileWriter3.append(',')
+                    fileWriter3.append(current)
                     fileWriter3.append("\n")
                 }
             }
