@@ -31,4 +31,6 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64,linux/386
           push: true
-          tags: ${{ steps.date.outputs.date }}
+          tags: |
+            user/app:latest
+            user/app:${{ steps.date.outputs.date }}
