@@ -83,7 +83,7 @@ class KafkaIntegration() {
             //}
 
             //Run for 1 minutes
-            Thread.sleep(60_000)
+            Thread.sleep(300_000)
             current = "0"
 
             println("Writing to file...")
@@ -113,8 +113,7 @@ class KafkaIntegration() {
                     fileWriter.append(info[5])
 
                     fileWriter.append("\n")
-                }
-                if (info[4] == "data") {
+                } else if (info[4] == "data") {
                     fileWriter2.append(info[1])
                     fileWriter2.append(',')
                     fileWriter2.append(getMovieID(info[6]))
@@ -124,8 +123,7 @@ class KafkaIntegration() {
                     fileWriter2.append(info[7])
 
                     fileWriter2.append("\n")
-                }
-                if (info[2] == "recommendation") {
+                } else if (info[2] == "recommendation") {
                     fileWriter3.append(info[0])
                     fileWriter3.append(',')
                     fileWriter3.append(info[1])
