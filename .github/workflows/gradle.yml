@@ -63,13 +63,15 @@ jobs:
        privateKey: ${{secrets.SSH_ACTION_SECRET}}
 
     - name: Get current date
-      id: date
-      run: echo "name=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+      uses: 1466587594/get-current-time@v2
+      id: current-time
+      with:
+        format: YYYY-MM-DD
     - name: Test with environment variables
-      run: echo $TAG_NAME - $RELEASE_NAME
       env:
-        TAG_NAME: daily-tag-${{ steps.date.outputs.date }}
-        RELEASE_NAME: daily-release-${{ steps.date.outputs.date }}
+        DATE: ${{ steps.current-time.outputs }}
+      run: echo $DATE
+
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -79,8 +81,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}} # actions automatically generates this
       with:
-        tag_name: ${{ steps.date.outputs.date }}
-        release_name: Release ${{ steps.date.outputs.date }}
+        tag_name: ${{ steps.current-time.outputs }}
+        release_name: Release ${{ steps.current-time.outputs }}
         body: Updated collaborative filtering model
         draft: false
         prerelease: false
