@@ -9,7 +9,7 @@ nohup ./gradlew run > recommendations.out 2> recommendations.err < /dev/null &
 # This grabs the 'next' 5000 data points from server.
 # This data is synthetic, but it represents the next 5000 points in the real-time 
 # continuous data stream as it would appear in real life.
-# ./gradlew integrationTask
+./gradlew integrationTask
 
 # To update the remote repo with the new data in preparation for next build
 git add .
