@@ -69,7 +69,7 @@ jobs:
         format: YYYY-MM-DD
     - name: Test with environment variables
       env:
-        DATE: ${{ steps.current-time.outputs }}
+        DATE: ${{ steps.current-time.outputs.formattedTime }}
       run: echo $DATE
 
 
@@ -82,7 +82,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}} # actions automatically generates this
       with:
         tag_name: ${{ steps.current-time.outputs }}
-        release_name: Release ${{ steps.current-time.outputs }}
+        release_name: Release ${{ steps.current-time.outputs.formattedTime }}
         body: Updated collaborative filtering model
         draft: false
         prerelease: false
