@@ -32,6 +32,8 @@ dependencies {
     implementation("org.apache.commons:commons-csv:1.8")
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.11.0")
+    implementation("org.postgresql:postgresql:42.2.2")
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testImplementation(platform("org.junit:junit-bom:5.7.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
