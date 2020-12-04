@@ -9,8 +9,15 @@ killall -9 java
 # This grabs the 'next' 5000 data points from server.
 # This data is synthetic, but it represents the next 5000 points in the real-time 
 # continuous data stream as it would appear in real life.
-./gradlew integrationTask
+# ./gradlew integrationTask
 
+
+dt=$(date '+%Y-%m-%d-%H-%M')
+docker build -t runtask$dt .
+docker login
+docker tag runtask$dt teamjelly/se4ai-client-p4:$dt
+docker push teamjelly/se4ai-client-p4:$dt
+# echo "varname$dt"
 # To update the remote repo with the new data in preparation for next build
 # git add .
 # git commit -m "updated kafka movie ratings data"
