@@ -106,8 +106,8 @@ class CFmodel()
         while (id == -1) {
             id = (0..182799).random()
             i += 1
-            if (i > 200){
-                id = 275315
+            if (i > 1000){
+                id = 435809
             }
         }
         // pass in id and calculate score with every movie
