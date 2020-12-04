@@ -21,14 +21,6 @@ fun main(args: Array<String>)  {
     model.initDataSet()
     model.train()
 
-    //connect to database
-    val url = "jdbc:postgresql://localhost:5432/se4ai_t4?user=postgres&password=team_jelly"
-    lateinit var conn: Connection
-    try {
-        conn = DriverManager.getConnection(url);
-    }
-    catch (e: SQLException) { print(e.message) }
-
     // create API for monitoring
     HttpServer.create(InetSocketAddress(port), 0).apply {
         createContext("/monitoring") { http ->
@@ -39,6 +31,14 @@ fun main(args: Array<String>)  {
 
                 // draw graph based on database data
                 // first connect to database
+
+                //connect to database
+                val url = "jdbc:postgresql://localhost:5432/se4ai_t4?user=postgres&password=team_jelly"
+                lateinit var conn: Connection
+                try {
+                    conn = DriverManager.getConnection(url);
+                }
+                catch (e: SQLException) { print(e.message) }
 
                 try {
                     val stmt: Statement = conn.createStatement()
@@ -58,6 +58,7 @@ fun main(args: Array<String>)  {
                         f1.add(result.getFloat(4))
                         time.add(result.getTimestamp(5))
                     }
+                    conn.close()
 
                     out.println("<!DOCTYPE HTML>\n" +
                             "<html>\n" +
@@ -114,9 +115,7 @@ fun main(args: Array<String>)  {
                 }
             }
         }
-    }
 
-    HttpServer.create(InetSocketAddress(port), 0).apply {
         createContext("/recommend") { http ->
             http.responseHeaders.add("Content-type", "text/plain")
             http.sendResponseHeaders(200, 0)
@@ -127,8 +126,15 @@ fun main(args: Array<String>)  {
                 // ==================
                 // YOUR CODE GOES HERE
                 //val recommendations = listOf(20,22,23)
+                //connect to database
+                val url = "jdbc:postgresql://localhost:5432/se4ai_t4?user=postgres&password=team_jelly"
+                lateinit var conn: Connection
+                try {
+                    conn = DriverManager.getConnection(url);
+                }
+                catch (e: SQLException) { print(e.message) }
 
-                val list = model.predict(userId, 20, false)  
+                val list = model.predict(userId, 20, false)
                 //println(list)
 
                 // each row has "rating", "movieId", "movieName"
@@ -142,7 +148,7 @@ fun main(args: Array<String>)  {
 
                 // add to database
                 val stmt = conn.prepareStatement(
-                    """
+                        """
                         INSERT INTO public.recommendations 
                         (uid, movie_list, ranking_score, recommend_time) 
                         VALUES (?,?,?,?)
@@ -159,6 +165,7 @@ fun main(args: Array<String>)  {
                 try {
                     val success = stmt.executeUpdate()
                 } catch (e: SQLException) { }
+                conn.close()
 
                 out.println(recommendations.toList().joinToString(","))
                 println("Recommended watchlist for user $userId: $recommendations")
@@ -166,6 +173,6 @@ fun main(args: Array<String>)  {
         }
 
         start()
-        conn.close()
+
     }
 }
