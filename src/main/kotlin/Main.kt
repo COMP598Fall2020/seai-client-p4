@@ -135,7 +135,7 @@ fun main(args: Array<String>)  {
                 catch (e: SQLException) { println(e.message) }
 
                 val list = model.predict(userId, 20, false)
-                println(list)
+                //println(list)
 
                 // each row has "rating", "movieId", "movieName"
                 // recommendations.map(it -> String.toDouble(it.second))
@@ -145,6 +145,8 @@ fun main(args: Array<String>)  {
                     recommendations.add(i.second.toString().toInt())
                     ratings.add(i.first.toString().toInt())
                 }
+                out.print(recommendations.toList().joinToString(","))
+                println("Recommended watchlist for user $userId: $recommendations")
 
                 // add to database
                 val stmt = conn.prepareStatement(
@@ -156,6 +158,8 @@ fun main(args: Array<String>)  {
                 )
                 val arr1 : java.sql.Array = conn.createArrayOf("VARCHAR", recommendations.toTypedArray())
                 val arr2 : java.sql.Array = conn.createArrayOf("VARCHAR", ratings.toTypedArray())
+		println(recommendations)
+		println(ratings)
                 stmt.setInt(1, userId.toString().toInt())
                 stmt.setArray(2, arr1)
                 stmt.setArray(3, arr2)
@@ -166,9 +170,6 @@ fun main(args: Array<String>)  {
                     val success = stmt.executeUpdate()
                 } catch (e: SQLException) { println(e.message) }
                 conn.close()
-
-                out.print(recommendations.toList().joinToString(","))
-                println("Recommended watchlist for user $userId: $recommendations")
             }
         }
 
