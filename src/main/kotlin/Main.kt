@@ -164,7 +164,7 @@ fun main(args: Array<String>)  {
 
                 try {
                     val success = stmt.executeUpdate()
-                } catch (e: SQLException) { }
+                } catch (e: SQLException) { print(e.message) }
                 conn.close()
 
                 out.println(recommendations.toList().joinToString(","))
