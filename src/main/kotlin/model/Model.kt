@@ -84,14 +84,14 @@ class CFmodel()
         recommender = pmf
     }
 
-    fun postEval(recommander:Recommender) {
+    fun postEval(recommender:Recommender) {
         // TODO: add evaluation here, then store to the database
         val url = "jdbc:postgresql://localhost:5432/se4ai_t4?user=postgres&password=team_jelly"
         try {
             val conn: Connection = DriverManager.getConnection(url);
             val stmt: Statement = conn.createStatement()
 
-            val rmse : QualityMeasure=  RMSE(recommander)
+            val rmse : QualityMeasure=  RMSE(recommender)
             val rmseScore : Double = rmse.getScore()
 
             val precision = Precision(recommender, 5, 4.0)
@@ -104,9 +104,21 @@ class CFmodel()
             val f1Score = f1.score
 
             // insert data
-            val sql = "INSERT INTO public.performance (rmse, precision, recall, f1) VALUES ($rmseScore, $precisionScore, $recallScore, $f1Score)"
+            val stmt = conn.prepareStatement(
+                    """
+                        INSERT INTO public.performance (rmse, precision, recall, f1, time) 
+                        VALUES (?,?,?,?,?)
+                    """
+            )
+            stmt.setFloat(1, rmseScore)
+            stmt.setFloat(2, precisionScore)
+            stmt.setFloat(3, recallScore)
+            stmt.setFloat(4, f1Score)
+            val timestamp : Timestamp = Timestamp(System.currentTimeMillis())
+            stmt.setTimestamp(5, timestamp)
+
             try {
-                val result = stmt.executeUpdate(sql)
+                val result = stmt.executeUpdate()
             }
             catch (e:SQLException) {
                 println("failed to insert performance data, " + e.message)

@@ -27,7 +27,7 @@ fun main(args: Array<String>)  {
     try {
         conn = DriverManager.getConnection(url);
     }
-    catch (e: SQLException) { println("Failed to connect to the database") }
+    catch (e: SQLException) { print(e.message) }
 
     // create API for monitoring
     HttpServer.create(InetSocketAddress(3000), 0).apply {
@@ -142,7 +142,7 @@ fun main(args: Array<String>)  {
 
                 // add to database
                 val stmt = conn.prepareStatement(
-                        """
+                    """
                         INSERT INTO public.recommendations 
                         (uid, movie_list, ranking_score, recommend_time) 
                         VALUES (?,?,?,?)
