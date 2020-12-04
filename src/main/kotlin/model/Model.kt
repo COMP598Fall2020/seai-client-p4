@@ -94,13 +94,16 @@ class CFmodel()
         var id : Int = dataModel.findUserIndex(userId)
         if (id == -1) 
             id = dataModel.findTestUserIndex(userId)
-        if (id == -1) {
+        //if (id == -1) {
             //println("Cannot predict because userId not found")
-            val list : MutableList<Triple<Any?, Any?, Any?>> = mutableListOf()
-            for (i in 1..num) {
-                list.add(Triple(userId, (0..movies.nrow).random(), null))
-            }
-            return Collections.unmodifiableList(list)
+            //val list : MutableList<Triple<Any?, Any?, Any?>> = mutableListOf()
+            //for (i in 1..num) {
+            //    list.add(Triple(userId, (0..movies.nrow).random(), null))
+            //}
+            //return Collections.unmodifiableList(list)
+        //}
+        while (id == -1) {
+            id = (0..dataModel.getItems().toList().size).random()
         }
         // pass in id and calculate score with every movie
         val items = dataModel.getItems()
