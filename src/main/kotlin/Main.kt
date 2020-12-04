@@ -27,7 +27,7 @@ fun main(args: Array<String>)  {
     try {
         conn = DriverManager.getConnection(url);
     }
-    catch (e: SQLException) { println("Failed to connect to the database") }
+    catch (e: SQLException) { println(e.message) }
 
     // create API for monitoring
     HttpServer.create(InetSocketAddress(port), 0).apply {
