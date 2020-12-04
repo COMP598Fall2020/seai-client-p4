@@ -33,7 +33,7 @@ fun main(args: Array<String>)  {
 
                 val list = model.predict(userId, 20, false)  
                 //println(list)
-                
+
                 // // each row has "rating", "movieId", "movieName"
                 // recommendations.map(it -> String.toDouble(it.second))
                 val recommendations : MutableList<Int> = mutableListOf()
@@ -43,7 +43,7 @@ fun main(args: Array<String>)  {
 
                 // ==================
 
-                out.println(recommendations)
+                out.println(recommendations.joinToString(","))
                 println("Recommended watchlist for user $userId: $recommendations")
             }
         }
