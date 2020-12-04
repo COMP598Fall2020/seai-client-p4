@@ -4,16 +4,16 @@
 name: Java CI with Gradle
 
 on:
-  push:
-    branches: 
-      - main
-  pull_request:
-    branches:
-      - main
-  # schedule:
+  # push:
+  #   branches: 
+  #     - main
+  # pull_request:
+  #   branches:
+  #     - main
+  schedule:
 
-  # #   # trigger build every 15 minutes
-  #    - cron: "*/60 * * * *"
+  #   # trigger build every 15 minutes
+     - cron: "*/30 * * * *"
 
 jobs:
 
