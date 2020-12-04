@@ -89,7 +89,6 @@ class CFmodel()
         val url = "jdbc:postgresql://localhost:5432/se4ai_t4?user=postgres&password=team_jelly"
         try {
             val conn: Connection = DriverManager.getConnection(url);
-            val stmt: Statement = conn.createStatement()
 
             val rmse : QualityMeasure=  RMSE(recommender)
             val rmseScore : Double = rmse.getScore()
@@ -110,10 +109,10 @@ class CFmodel()
                         VALUES (?,?,?,?,?)
                     """
             )
-            stmt.setFloat(1, rmseScore)
-            stmt.setFloat(2, precisionScore)
-            stmt.setFloat(3, recallScore)
-            stmt.setFloat(4, f1Score)
+            stmt.setFloat(1, rmseScore.toFloat())
+            stmt.setFloat(2, precisionScore.toFloat())
+            stmt.setFloat(3, recallScore.toFloat())
+            stmt.setFloat(4, f1Score.toFloat())
             val timestamp : Timestamp = Timestamp(System.currentTimeMillis())
             stmt.setTimestamp(5, timestamp)
 
