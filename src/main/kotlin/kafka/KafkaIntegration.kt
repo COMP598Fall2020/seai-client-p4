@@ -84,7 +84,6 @@ class KafkaIntegration() {
 
             //Run for 1 minutes
             Thread.sleep(200_000)
-            current = "0"
 
             println("Writing to file...")
             for (info in messages) {

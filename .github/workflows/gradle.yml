@@ -33,6 +33,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
+  # Build and test project
     - name: Cache Gradle packages
       uses: actions/cache@v2
       with:
@@ -51,18 +52,12 @@ jobs:
       uses: garygrossgarten/github-action-ssh@v0.5.0
       with:
 
-      # cd into client repo
-      # git pull
-      # change rights to bash script
-      # execute bash script which:
-          # kills existing Java processes
-          # runs gradle application in the background to start recommendation server
-          # runs the gradle integrationTask and push to github
        command: cd Comp598_Project/seai-client-p4/ && git pull && chmod +x background_run_app.sh && sh ./background_run_app.sh
        host: fall2020-comp598-4.cs.mcgill.ca
        username: localuser
        privateKey: ${{secrets.SSH_ACTION_SECRET}}
 
+    #  Get current date/time for release tags!
     - name: Get current date
       uses: 1466587594/get-current-time@v2
       id: current-time
@@ -73,7 +68,7 @@ jobs:
         DATE: ${{ steps.current-time.outputs.formattedTime }}
       run: echo $DATE
 
-
+    #  Release newest version of project!
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Create Release
@@ -84,30 +79,30 @@ jobs:
       with:
         tag_name: ${{ steps.current-time.outputs.formattedTime }}
         release_name: Release ${{ steps.current-time.outputs.formattedTime }}
-        body: Updated collaborative filtering model
+        body: Updated collaborative filtering model for ${{ steps.current-time.outputs.formattedTime }}
         draft: false
         prerelease: false
 
 
-#     - name: Set up QEMU
-#       uses: docker/setup-qemu-action@v1
-#     - name: Set up Docker Buildx
-#       uses: docker/setup-buildx-action@v1
+# Publish docker image to Docker Hub!
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
     
-#     - name: Login to Docker Hub
-#       uses: docker/login-action@v1
-#       with:
-#         username: ${{ secrets.DOCKERHUB_USERNAME }}
-#         password: ${{ secrets.DOCKERHUB_PASSWORD }}
-# #         repository: ${{ secrets.DOCKERHUB_REPO}}
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+#         repository: ${{ secrets.DOCKERHUB_REPO}}
 
-#     - name: Build and push
-#       uses: docker/build-push-action@v2
-#       with:
-#         context: .
-#         file: ./Dockerfile
+    - name: Build and push
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./Dockerfile
 #         platforms: linux/amd64,linux/arm64,linux/386
-#         push: true
-#         tags: |
-#           ${{secrets.DOCKERHUB_REPO}}:latest
-#           ${{secrets.DOCKERHUB_REPO}}:${{ steps.current-time.outputs}}
+        push: true
+        tags: |
+          ${{secrets.DOCKERHUB_REPO}}:latest
+          ${{secrets.DOCKERHUB_REPO}}:${{ steps.current-time.outputs.formattedTime}}
