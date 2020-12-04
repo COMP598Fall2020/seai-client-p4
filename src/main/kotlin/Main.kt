@@ -18,12 +18,12 @@ fun main(args: Array<String>)  {
 
     val port = 8082
     println("Starting server at ${InetAddress.getLocalHost().hostName}:${port}")
-
+    var current = LocalDateTime.now()
     //train the model
     model.train()
     var fileWriter: FileWriter? = null;
     try {
-        fileWriter = FileWriter("data/recommendations.out", true)
+        fileWriter = FileWriter("data/recommendations_" + port.toString() + "_" + current +".out", true)
         HttpServer.create(InetSocketAddress(port), 0).apply {
             createContext("/recommend") { http ->
                 http.responseHeaders.add("Content-type", "text/plain")
@@ -47,7 +47,7 @@ fun main(args: Array<String>)  {
                     }
 
                     // ==================
-                    var current = LocalDateTime.now()
+                    current = LocalDateTime.now()
                     out.print(recommendations.joinToString(","))
                     println("Recommended watchlist for user $userId at time $current: $recommendations")
                     fileWriter.append("Recommended watchlist for user $userId at time $current: $recommendations \n")
