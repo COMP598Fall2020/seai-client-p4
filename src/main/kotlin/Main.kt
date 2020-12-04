@@ -38,7 +38,7 @@ fun main(args: Array<String>)  {
                 try {
                     conn = DriverManager.getConnection(url);
                 }
-                catch (e: SQLException) { print(e.message) }
+                catch (e: SQLException) { println(e.message) }
 
                 try {
                     val stmt: Statement = conn.createStatement()
@@ -132,10 +132,10 @@ fun main(args: Array<String>)  {
                 try {
                     conn = DriverManager.getConnection(url);
                 }
-                catch (e: SQLException) { print(e.message) }
+                catch (e: SQLException) { println(e.message) }
 
                 val list = model.predict(userId, 20, false)
-                //println(list)
+                println(list)
 
                 // each row has "rating", "movieId", "movieName"
                 // recommendations.map(it -> String.toDouble(it.second))
@@ -164,10 +164,10 @@ fun main(args: Array<String>)  {
 
                 try {
                     val success = stmt.executeUpdate()
-                } catch (e: SQLException) { print(e.message) }
+                } catch (e: SQLException) { println(e.message) }
                 conn.close()
 
-                out.println(recommendations.toList().joinToString(","))
+                out.print(recommendations.toList().joinToString(","))
                 println("Recommended watchlist for user $userId: $recommendations")
             }
         }
