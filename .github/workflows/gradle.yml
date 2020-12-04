@@ -99,7 +99,7 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        repository: ${{ secrets.DOCKERHUB_REPO}}
+#         repository: ${{ secrets.DOCKERHUB_REPO}}
 
     - name: Build and push
       uses: docker/build-push-action@v2
