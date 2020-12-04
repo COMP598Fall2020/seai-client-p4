@@ -89,7 +89,6 @@ class ModelTest {
         }
 
         plot.exportData(prefix_path + "exports/rating-plot-data.csv")
-        plot.printData("0", "0.00")
         plot.exportPlot(prefix_path + "exports/rating-plot.png")
     }
 
@@ -119,7 +118,6 @@ class ModelTest {
         }
 
         plot.exportPlot(prefix_path + "exports/precision-recall-plot.png")
-        plot.printData()
         plot.exportData(prefix_path + "exports/precision-recall-plot-data.csv")
     }
 
@@ -141,7 +139,6 @@ class ModelTest {
         }
 
         plot.exportPlot(prefix_path + "exports/F1-plot.png")
-        plot.printData("0", "0.000")
         plot.exportData(prefix_path + "exports/F1-plot-data.csv")
     }
 
