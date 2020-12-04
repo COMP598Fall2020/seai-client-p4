@@ -79,7 +79,7 @@ jobs:
       with:
         tag_name: ${{ steps.current-time.outputs.formattedTime }}
         release_name: Release ${{ steps.current-time.outputs.formattedTime }}
-        body: Updated collaborative filtering model for ${{ step.current-time.outputs.formattedTime }}
+        body: Updated collaborative filtering model for ${{ steps.current-time.outputs.formattedTime }}
         draft: false
         prerelease: false
 
