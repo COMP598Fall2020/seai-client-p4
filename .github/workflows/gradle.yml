@@ -24,49 +24,50 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
+# comment out all gradle tasks temporarily
+#     - name: Set up JDK 1.8
+#       uses: actions/setup-java@v1
+#       with:
+#         java-version: 1.8
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+#     - name: Grant execute permission for gradlew
+#       run: chmod +x gradlew
 
-    - name: Cache Gradle packages
-      uses: actions/cache@v2
-      with:
-        path: ~/.gradle/caches
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}  
-        restore-keys: ${{ runner.os }}-gradle
+#     - name: Cache Gradle packages
+#       uses: actions/cache@v2
+#       with:
+#         path: ~/.gradle/caches
+#         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}  
+#         restore-keys: ${{ runner.os }}-gradle
 
-    - name: Build with Gradle
-      run: ./gradlew build
+#     - name: Build with Gradle
+#       run: ./gradlew build
 
-    - name: Test
-      run: ./gradlew clean test
+#     - name: Test
+#       run: ./gradlew clean test
 
-    # ssh into virtual machine 
-    - name: Run SSH command
-      uses: garygrossgarten/github-action-ssh@v0.5.0
-      with:
+#     # ssh into virtual machine 
+#     - name: Run SSH command
+#       uses: garygrossgarten/github-action-ssh@v0.5.0
+#       with:
 
-      # cd into client repo
-      # git pull
-      # change rights to bash script
-      # execute bash script which:
-          # kills existing Java processes
-          # runs gradle application in the background to start recommendation server
-          # runs the gradle integrationTask and push to github
-       command: cd Comp598_Project/seai-client-p4/ && git pull && chmod +x background_run_app.sh && sh ./background_run_app.sh
-       host: fall2020-comp598-4.cs.mcgill.ca
-       username: localuser
-       privateKey: ${{secrets.SSH_ACTION_SECRET}}
+#       # cd into client repo
+#       # git pull
+#       # change rights to bash script
+#       # execute bash script which:
+#           # kills existing Java processes
+#           # runs gradle application in the background to start recommendation server
+#           # runs the gradle integrationTask and push to github
+#        command: cd Comp598_Project/seai-client-p4/ && git pull && chmod +x background_run_app.sh && sh ./background_run_app.sh
+#        host: fall2020-comp598-4.cs.mcgill.ca
+#        username: localuser
+#        privateKey: ${{secrets.SSH_ACTION_SECRET}}
 
     - name: Get current date
       uses: 1466587594/get-current-time@v2
       id: current-time
       with:
-        format: YYYY-MM-DD-HH-MM
+        format: YYYY-MM-DD-HH-MM-SS
     - name: Test with environment variables
       env:
         DATE: ${{ steps.current-time.outputs.formattedTime }}
@@ -88,9 +89,6 @@ jobs:
         prerelease: false
 
 
-
-    - name: Check out the repo
-      uses: actions/checkout@v2
     
     - name: Login to Docker Hub
       uses: docker/login-action@v1
