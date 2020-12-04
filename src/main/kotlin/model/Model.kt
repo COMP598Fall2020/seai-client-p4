@@ -1,6 +1,7 @@
 package model
 
 import es.upm.etsisi.cf4j.data.DataModel
+import es.upm.etsisi.cf4j.data.DataSet
 import es.upm.etsisi.cf4j.data.RandomSplitDataSet
 import es.upm.etsisi.cf4j.qualityMeasure.QualityMeasure
 import es.upm.etsisi.cf4j.qualityMeasure.prediction.RMSE
@@ -8,9 +9,14 @@ import es.upm.etsisi.cf4j.recommender.Recommender
 import es.upm.etsisi.cf4j.recommender.matrixFactorization.PMF
 import krangl.DataFrame
 import krangl.asDataFrame
+import krangl.fromResultSet
 import krangl.readCSV
 import java.io.*
 import java.util.*
+import java.sql.*
+import es.upm.etsisi.cf4j.qualityMeasure.recommendation.F1
+import es.upm.etsisi.cf4j.qualityMeasure.recommendation.Precision
+import es.upm.etsisi.cf4j.qualityMeasure.recommendation.Recall
 
 class CFmodel()
 {
@@ -31,25 +37,24 @@ class CFmodel()
     //protected lateinit var movies : MutableMap<String, String>
     protected lateinit var movies : DataFrame
 
-    init {
-        if (!loadDataSet())
-            initDataSet()
-    }
+    init { }
 
     fun initDataSet() {
+        // laod new dataset from csv
         dataSet = RandomSplitDataSet(DATA_FILE_NAME, TRAIN_PERCENT, TEST_PERCENT, ",")
-        dataModel = DataModel(dataSet) 
-        //dataModel = BenchmarkDataModels.MovieLens100K()
+        dataModel = DataModel(dataSet)
+        // save data model
+        saveDataModel()
+
         //readFile("data/movies.csv", ",")
         movies = DataFrame.readCSV("data/movies_all.csv")
-        //println(movies.filterByRow { it["id"] as Int > 1130 })
     }
 
-    fun saveDataSet() {
+    fun saveDataModel() {
         dataModel.save(DATA_SAVE_PATH)
     }
 
-    fun loadDataSet() : Boolean {
+    fun loadDataModel() : Boolean {
         val file = File(DATA_SAVE_PATH)
         val fileExists = file.exists()
         if (fileExists) {
@@ -74,10 +79,47 @@ class CFmodel()
         val pmf = PMF(dataModel, NUM_FACTORS, NUM_ITERS, REGULATION, LR, RANDOM_SEED);
         pmf.fit();
 
-        val rmse : QualityMeasure=  RMSE(pmf)
-        val rmseScore : Double = rmse.getScore()
+        postEval(pmf)
 
         recommender = pmf
+    }
+
+    fun postEval(recommander:Recommender) {
+        // TODO: add evaluation here, then store to the database
+        val url = "jdbc:postgresql://localhost:5432/se4ai_t4?user=postgres&password=team_jelly"
+        try {
+            val conn: Connection = DriverManager.getConnection(url);
+            val stmt: Statement = conn.createStatement()
+
+            val rmse : QualityMeasure=  RMSE(recommander)
+            val rmseScore : Double = rmse.getScore()
+
+            val precision = Precision(recommender, 5, 4.0)
+            val precisionScore: Double = precision.getScore()
+
+            val recall = Recall(recommender, 5, 4.0)
+            val recallScore = recall.score
+
+            val f1 = F1(recommender, 5, 4.0)
+            val f1Score = f1.score
+
+            // insert data
+            val sql = "INSERT INTO public.performance (rmse, precision, recall, f1) VALUES ($rmseScore, $precisionScore, $recallScore, $f1Score)"
+            try {
+                val result = stmt.executeUpdate(sql)
+            }
+            catch (e:SQLException) {
+                println("failed to insert performance data, " + e.message)
+            }
+
+            stmt.close()
+            conn.close()
+        }
+        catch (e: SQLException) {
+            println(e.message)
+        }
+
+
     }
 
     /**

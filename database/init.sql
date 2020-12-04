@@ -1,3 +1,20 @@
+CREATE TABLE public.recommendations (
+    rid serial PRIMARY KEY,
+    uid INT NOT NULL,
+    movie_list VARCHAR(200),
+    ranking_score VARCHAR(200),
+    recommend_time TIMESTAMP
+);
+
+CREATE TABLE public.performance (
+    id serial PRIMARY KEY,
+    rmse FLOAT,
+    precision FLOAT,
+    recall FLOAT,
+    f1 FLOAT,
+    time TIMESTAMP
+);
+
 CREATE TABLE public.users (
 	user_id serial PRIMARY KEY,
 	user_name VARCHAR(20) UNIQUE NOT NULL
@@ -18,18 +35,7 @@ CREATE TABLE public.ratings (
     rating FLOAT,
     rating_time TIMESTAMP,
     CONSTRAINT fk_movie
-      FOREIGN KEY(mid) 
+      FOREIGN KEY(mid)
 	    REFERENCES public.movies(id_long)
 );
 
-CREATE TABLE public.recommendations (
-    id serial PRIMARY KEY,
-    uid INT,
-    mid INT,
-    ranking_score FLOAT,
-    batch_num INT,
-    recommend_time TIMESTAMP,
-    CONSTRAINT fk_movie
-      FOREIGN KEY(mid) 
-	    REFERENCES public.movies(id_long)
-);

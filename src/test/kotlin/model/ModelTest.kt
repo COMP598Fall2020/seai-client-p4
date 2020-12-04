@@ -19,6 +19,7 @@ class ModelTest {
     @DisplayName("model regularization test")
     fun regularizationTest() {
         val model = CFmodel()
+        if (!model.loadDataModel()) return
         val regValues = doubleArrayOf(
             0.000,
             0.025,
@@ -52,6 +53,7 @@ class ModelTest {
     @DisplayName("model factor test")
     fun factorTest() {
         val model = CFmodel()
+        if (!model.loadDataModel()) return
         val NUM_FACTORS = Range.ofIntegers(5, 5, 5)
         // Evaluate PMF Recommender
         val plot =  LinePlot(NUM_FACTORS, "Num of Factor", "RMSE")
@@ -71,7 +73,7 @@ class ModelTest {
     @DisplayName("scatter plot test")
     fun ratingPlotTest() {
         val model = CFmodel()
-
+        if (!model.loadDataModel()) return
         model.trainWithParam(10, 50, 0.25)
 
         val plot = ScatterPlot("Number of ratings", "Averaged user prediction error")
@@ -96,6 +98,7 @@ class ModelTest {
     @DisplayName("Precision and Recall XY plot test")
     fun xyPlotTest() {
         val model = CFmodel()
+        if (!model.loadDataModel()) return
         val numberOfRecommendations = intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
         val labels = arrayOfNulls<String>(numberOfRecommendations.size)
@@ -129,6 +132,7 @@ class ModelTest {
         val plot = LinePlot(numberOfRecommendations, "Number of recommendations", "F1")
 
         val model = CFmodel()
+        if (!model.loadDataModel()) return
         model.trainWithParam(5, 50, 0.25)
         plot.addSeries("PMF")
 
