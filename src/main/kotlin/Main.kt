@@ -30,7 +30,7 @@ fun main(args: Array<String>)  {
     catch (e: SQLException) { println("Failed to connect to the database") }
 
     // create API for monitoring
-    HttpServer.create(InetSocketAddress(3000), 0).apply {
+    HttpServer.create(InetSocketAddress(port), 0).apply {
         createContext("/monitoring") { http ->
             http.responseHeaders.add("Content-type", "text/html")
             http.sendResponseHeaders(200, 0)
