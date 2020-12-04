@@ -43,7 +43,7 @@ fun main(args: Array<String>)  {
 
                 // ==================
 
-                out.println(recommendations.joinToString(","))
+                out.println(recommendations.toList().joinToString(","))
                 println("Recommended watchlist for user $userId: $recommendations")
             }
         }

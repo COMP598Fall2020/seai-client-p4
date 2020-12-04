@@ -102,8 +102,13 @@ class CFmodel()
             //}
             //return Collections.unmodifiableList(list)
         //}
+        var i = 0
         while (id == -1) {
-            id = (0..dataModel.getItems().toList().size).random()
+            id = (0..182799).random()
+            i += 1
+            if (i > 200){
+                id = 275315
+            }
         }
         // pass in id and calculate score with every movie
         val items = dataModel.getItems()
