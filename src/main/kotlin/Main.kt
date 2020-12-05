@@ -32,7 +32,7 @@ fun main(args: Array<String>)  {
                 // first connect to database
 
                 //connect to database
-                val url = "jdbc:postgresql://localhost:5432/se4ai_t4?user=postgres&password=team_jelly"
+                val url = "jdbc:postgresql://database:5432/se4ai_t4?user=postgres&password=team_jelly"
                 lateinit var conn: Connection
                 try {
                     conn = DriverManager.getConnection(url);
@@ -79,7 +79,7 @@ fun main(args: Array<String>)  {
                 // YOUR CODE GOES HERE
                 //val recommendations = listOf(20,22,23)
                 //connect to database
-                val url = "jdbc:postgresql://localhost:5432/se4ai_t4?user=postgres&password=team_jelly"
+                val url = "jdbc:postgresql://database:5432/se4ai_t4?user=postgres&password=team_jelly"
                 try {
                     val conn = DriverManager.getConnection(url);
                     println("connecting to database...")
