@@ -59,54 +59,7 @@ fun main(args: Array<String>)  {
                     }
                     conn.close()
 
-                    out.println("<!DOCTYPE HTML>\n" +
-                            "<html>\n" +
-                            "<head>\n" +
-                            "<script>\n" +
-                            "window.onload = function() {\n" +
-                            "\n" +
-                            "var dataPoints = [];\n" +
-                            "\n" +
-                            "var chart = new CanvasJS.Chart(\"chartContainer\", {\n" +
-                            "\tanimationEnabled: true,\n" +
-                            "\ttheme: \"light2\",\n" +
-                            "\ttitle: {\n" +
-                            "\t\ttext: \"Daily Sales Data\"\n" +
-                            "\t},\n" +
-                            "\taxisY: {\n" +
-                            "\t\ttitle: \"Units\",\n" +
-                            "\t\ttitleFontSize: 24,\n" +
-                            "\t\tincludeZero: true\n" +
-                            "\t},\n" +
-                            "\tdata: [{\n" +
-                            "\t\ttype: \"column\",\n" +
-                            "\t\tyValueFormatString: \"#,### Units\",\n" +
-                            "\t\tdataPoints: dataPoints\n" +
-                            "\t}]\n" +
-                            "});\n" +
-                            "\n" +
-                            "function addData(data) {\n" +
-                            "\tfor (var i = 0; i < data.length; i++) {\n" +
-                            "\t\tdataPoints.push({\n" +
-                            "\t\t\tx: new Date(data[i].date),\n" +
-                            "\t\t\ty: data[i].units\n" +
-                            "\t\t});\n" +
-                            "\t}\n" +
-                            "\tchart.render();\n" +
-                            "\n" +
-                            "}\n" +
-                            "\n" +
-                            "\$.getJSON(\"https://canvasjs.com/data/gallery/javascript/daily-sales-data.json\", addData);\n" +
-                            "\n" +
-                            "}\n" +
-                            "</script>\n" +
-                            "</head>\n" +
-                            "<body>\n" +
-                            "<div id=\"chartContainer\" style=\"height: 370px; width: 100%;\"></div>\n" +
-                            "<script src=\"https://canvasjs.com/assets/script/jquery-1.11.1.min.js\"></script>\n" +
-                            "<script src=\"https://canvasjs.com/assets/script/canvasjs.min.js\"></script>\n" +
-                            "</body>\n" +
-                            "</html>")
+                    out.println(plotPage(rmse, pre, recall, f1, time))
 
                 }
                 catch (e: SQLException) {
@@ -175,4 +128,56 @@ fun main(args: Array<String>)  {
         start()
 
     }
+}
+
+fun plotPage(rmse, pre, recall, f1, time) {
+    return 
+        "<!DOCTYPE HTML>\n" +
+        "<html>\n" +
+        "<head>\n" +
+        "<script>\n" +
+        "window.onload = function() {\n" +
+        "\n" +
+        "var dataPoints = [];\n" +
+        "\n" +
+        "var chart = new CanvasJS.Chart(\"chartContainer\", {\n" +
+        "\tanimationEnabled: true,\n" +
+        "\ttheme: \"light2\",\n" +
+        "\ttitle: {\n" +
+        "\t\ttext: \"Daily Sales Data\"\n" +
+        "\t},\n" +
+        "\taxisY: {\n" +
+        "\t\ttitle: \"Units\",\n" +
+        "\t\ttitleFontSize: 24,\n" +
+        "\t\tincludeZero: true\n" +
+        "\t},\n" +
+        "\tdata: [{\n" +
+        "\t\ttype: \"column\",\n" +
+        "\t\tyValueFormatString: \"#,### Units\",\n" +
+        "\t\tdataPoints: dataPoints\n" +
+        "\t}]\n" +
+        "});\n" +
+        "\n" +
+        "function addData(data) {\n" +
+        "\tfor (var i = 0; i < data.length; i++) {\n" +
+        "\t\tdataPoints.push({\n" +
+        "\t\t\tx: new Date(data[i].date),\n" +
+        "\t\t\ty: data[i].units\n" +
+        "\t\t});\n" +
+        "\t}\n" +
+        "\tchart.render();\n" +
+        "\n" +
+        "}\n" +
+        "\n" +
+        "\$.getJSON(\"https://canvasjs.com/data/gallery/javascript/daily-sales-data.json\", addData);\n" +
+        "\n" +
+        "}\n" +
+        "</script>\n" +
+        "</head>\n" +
+        "<body>\n" +
+        "<div id=\"chartContainer\" style=\"height: 370px; width: 100%;\"></div>\n" +
+        "<script src=\"https://canvasjs.com/assets/script/jquery-1.11.1.min.js\"></script>\n" +
+        "<script src=\"https://canvasjs.com/assets/script/canvasjs.min.js\"></script>\n" +
+        "</body>\n" +
+        "</html>"
 }
