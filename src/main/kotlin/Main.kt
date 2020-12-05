@@ -224,6 +224,5 @@ fun plotPage(rmse:List<Float>, pre:List<Float>, recall:List<Float>, f1:List<Floa
             "<script src=\"https://canvasjs.com/assets/script/canvasjs.min.js\"></script>\n" +
             "</body>\n" +
             "</html>"
-    println("result is " + result)
-    return "hello world"
+    return result
 }
