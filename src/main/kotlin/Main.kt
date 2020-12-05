@@ -68,62 +68,62 @@ fun main(args: Array<String>)  {
             }
         }
 
-        createContext("/recommend") { http ->
-            http.responseHeaders.add("Content-type", "text/plain")
-            http.sendResponseHeaders(200, 0)
-            PrintWriter(http.responseBody).use { out ->
-                val userId = http.requestURI.path.substringAfterLast("/")
-                println("Received recommendation request for user $userId")
+        // createContext("/recommend") { http ->
+        //     http.responseHeaders.add("Content-type", "text/plain")
+        //     http.sendResponseHeaders(200, 0)
+        //     PrintWriter(http.responseBody).use { out ->
+        //         val userId = http.requestURI.path.substringAfterLast("/")
+        //         println("Received recommendation request for user $userId")
 
-                // ==================
-                // YOUR CODE GOES HERE
-                //val recommendations = listOf(20,22,23)
-                //connect to database
-                val url = "jdbc:postgresql://localhost:5432/se4ai_t4?user=postgres&password=team_jelly"
-                try {
-                    val conn = DriverManager.getConnection(url);
-                    println("connecting to database...")
+        //         // ==================
+        //         // YOUR CODE GOES HERE
+        //         //val recommendations = listOf(20,22,23)
+        //         //connect to database
+        //         val url = "jdbc:postgresql://localhost:5432/se4ai_t4?user=postgres&password=team_jelly"
+        //         try {
+        //             val conn = DriverManager.getConnection(url);
+        //             println("connecting to database...")
 
-                    val list = model.predict(userId, 20, false)
-                    //println(list)
+        //             val list = model.predict(userId, 20, false)
+        //             //println(list)
 
-                    // each row has "rating", "movieId", "movieName"
-                    // recommendations.map(it -> String.toDouble(it.second))
-                    val recommendations : MutableList<Int> = mutableListOf()
-                    val ratings : MutableList<Double> = mutableListOf()
-                    for (i in list) {
-                        recommendations.add(i.second.toString().toInt())
-                        ratings.add(String.format("%.3f", i.first.toString().toDouble()).toDouble())
-                    }
-                    out.print(recommendations.toList().joinToString(","))
-                    println("Recommended watchlist for user $userId: $recommendations")
+        //             // each row has "rating", "movieId", "movieName"
+        //             // recommendations.map(it -> String.toDouble(it.second))
+        //             val recommendations : MutableList<Int> = mutableListOf()
+        //             val ratings : MutableList<Double> = mutableListOf()
+        //             for (i in list) {
+        //                 recommendations.add(i.second.toString().toInt())
+        //                 ratings.add(String.format("%.3f", i.first.toString().toDouble()).toDouble())
+        //             }
+        //             out.print(recommendations.toList().joinToString(","))
+        //             println("Recommended watchlist for user $userId: $recommendations")
 
-                    // add to database
-                    //println(list)
-                    val stmt = conn.prepareStatement(
-                        """
-                            INSERT INTO public.recommendations 
-                            (uid, recommendations, score, recommend_time) 
-                            VALUES (?,?,?,?)
-                        """.trimIndent()
-                    )
+        //             // add to database
+        //             //println(list)
+        //             val stmt = conn.prepareStatement(
+        //                 """
+        //                     INSERT INTO public.recommendations 
+        //                     (uid, recommendations, score, recommend_time) 
+        //                     VALUES (?,?,?,?)
+        //                 """.trimIndent()
+        //             )
                     
-                    val arr1 : java.sql.Array = conn.createArrayOf("INT", recommendations.toTypedArray())
-                    val arr2 : java.sql.Array = conn.createArrayOf("VARCHAR", ratings.toTypedArray())
-                    stmt.setInt(1, userId.toString().toInt())
-                    stmt.setArray(2, arr1)
-                    stmt.setArray(3, arr2)
-                    val timestamp : Timestamp = Timestamp(System.currentTimeMillis())
-                    stmt.setTimestamp(4, timestamp)
+        //             val arr1 : java.sql.Array = conn.createArrayOf("INT", recommendations.toTypedArray())
+        //             val arr2 : java.sql.Array = conn.createArrayOf("VARCHAR", ratings.toTypedArray())
+        //             stmt.setInt(1, userId.toString().toInt())
+        //             stmt.setArray(2, arr1)
+        //             stmt.setArray(3, arr2)
+        //             val timestamp : Timestamp = Timestamp(System.currentTimeMillis())
+        //             stmt.setTimestamp(4, timestamp)
 
-                    try {
-                        val success = stmt.executeUpdate()
-                    } catch (e: SQLException) { println(e.message) }
-                    conn.close()
-                }
-                catch (e: SQLException) { println(e.message) }
-            }
-        }
+        //             try {
+        //                 val success = stmt.executeUpdate()
+        //             } catch (e: SQLException) { println(e.message) }
+        //             conn.close()
+        //         }
+        //         catch (e: SQLException) { println(e.message) }
+        //     }
+        // }
 
         start()
 
