@@ -4,7 +4,6 @@ import java.io.PrintWriter
 import java.net.InetAddress
 import java.net.InetSocketAddress
 import java.sql.*
-
 import kotlin.*
 import kotlin.io.println
 
@@ -128,48 +127,50 @@ fun main(args: Array<String>)  {
                 //val recommendations = listOf(20,22,23)
                 //connect to database
                 val url = "jdbc:postgresql://localhost:5432/se4ai_t4?user=postgres&password=team_jelly"
-                lateinit var conn: Connection
                 try {
-                    conn = DriverManager.getConnection(url);
+                    val conn = DriverManager.getConnection(url);
+                    println("connecting to database...")
+
+                    val list = model.predict(userId, 20, false)
+                    //println(list)
+
+                    // each row has "rating", "movieId", "movieName"
+                    // recommendations.map(it -> String.toDouble(it.second))
+                    val recommendations : MutableList<Int> = mutableListOf()
+                    for (i in list) {
+                        recommendations.add(i.second.toString().toInt())
+                    }
+                    out.print(recommendations.toList().joinToString(","))
+                    println("Recommended watchlist for user $userId: $recommendations")
+
+                    // add to database
+                    //println(list)
+                    val stmt = conn.prepareStatement(
+                        """
+                            INSERT INTO public.recommendations 
+                            (uid, recommendations, score, recommend_time) 
+                            VALUES (?,?,?,?)
+                        """.trimIndent()
+                    )
+                    val ratings : MutableList<Double> = mutableListOf()
+                    for (i in list) {
+                        ratings.add(String.format("%.3f", i.first.toString()).toDouble())
+                    }
+                    println(ratings)
+                    val arr1 : java.sql.Array = conn.createArrayOf("INT", recommendations.toTypedArray())
+                    val arr2 : java.sql.Array = conn.createArrayOf("FLOAT", ratings.toTypedArray())
+                    stmt.setInt(1, userId.toString().toInt())
+                    stmt.setArray(2, arr1)
+                    stmt.setArray(3, arr2)
+                    val timestamp : Timestamp = Timestamp(System.currentTimeMillis())
+                    stmt.setTimestamp(4, timestamp)
+
+                    try {
+                        val success = stmt.executeUpdate()
+                    } catch (e: SQLException) { println(e.message) }
+                    conn.close()
                 }
                 catch (e: SQLException) { println(e.message) }
-
-                val list = model.predict(userId, 20, false)
-                //println(list)
-
-                // each row has "rating", "movieId", "movieName"
-                // recommendations.map(it -> String.toDouble(it.second))
-                val recommendations : MutableList<Int> = mutableListOf()
-                val ratings : MutableList<Int> = mutableListOf()
-                for (i in list) {
-                    recommendations.add(i.second.toString().toInt())
-                    ratings.add(i.first.toString().toInt())
-                }
-                out.print(recommendations.toList().joinToString(","))
-                println("Recommended watchlist for user $userId: $recommendations")
-
-                // add to database
-                val stmt = conn.prepareStatement(
-                        """
-                        INSERT INTO public.recommendations 
-                        (uid, movie_list, ranking_score, recommend_time) 
-                        VALUES (?,?,?,?)
-                    """.trimIndent()
-                )
-                val arr1 : java.sql.Array = conn.createArrayOf("VARCHAR", recommendations.toTypedArray())
-                val arr2 : java.sql.Array = conn.createArrayOf("VARCHAR", ratings.toTypedArray())
-		println(recommendations)
-		println(ratings)
-                stmt.setInt(1, userId.toString().toInt())
-                stmt.setArray(2, arr1)
-                stmt.setArray(3, arr2)
-                val timestamp : Timestamp = Timestamp(System.currentTimeMillis())
-                stmt.setTimestamp(4, timestamp)
-
-                try {
-                    val success = stmt.executeUpdate()
-                } catch (e: SQLException) { println(e.message) }
-                conn.close()
             }
         }
 

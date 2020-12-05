@@ -1,8 +1,8 @@
 CREATE TABLE public.recommendations (
     rid serial PRIMARY KEY,
     uid INT NOT NULL,
-    movie_list VARCHAR(200),
-    ranking_score VARCHAR(200),
+    recommendations VARCHAR(500),
+    score VARCHAR(500),
     recommend_time TIMESTAMP
 );
 
