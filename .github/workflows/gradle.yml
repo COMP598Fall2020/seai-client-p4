@@ -12,8 +12,8 @@ on:
   #     - main
   schedule:
 
-  #   # trigger build every 3 days
-     - cron: "*/* 3 * * *"
+  #   # trigger build daily at midnight
+     - cron: "0 0 * * *"
 
 jobs:
 
