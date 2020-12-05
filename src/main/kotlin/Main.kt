@@ -49,13 +49,13 @@ fun main(args: Array<String>)  {
                     var pre = mutableListOf<Float>()
                     var recall = mutableListOf<Float>()
                     var f1 = mutableListOf<Float>()
-                    var time = mutableListOf<Timestamp>()
+                    var time = mutableListOf<String>()
                     while (result.next()) {
                         rmse.add(result.getFloat(1))
                         pre.add(result.getFloat(2))
                         recall.add(result.getFloat(3))
                         f1.add(result.getFloat(4))
-                        time.add(result.getTimestamp(5))
+                        time.add(result.getString(5))
                     }
                     conn.close()
 
@@ -137,8 +137,10 @@ fun main(args: Array<String>)  {
                     // each row has "rating", "movieId", "movieName"
                     // recommendations.map(it -> String.toDouble(it.second))
                     val recommendations : MutableList<Int> = mutableListOf()
+                    val ratings : MutableList<Double> = mutableListOf()
                     for (i in list) {
                         recommendations.add(i.second.toString().toInt())
+                        ratings.add(String.format("%.3f", i.first.toString().toDouble()).toDouble())
                     }
                     out.print(recommendations.toList().joinToString(","))
                     println("Recommended watchlist for user $userId: $recommendations")
@@ -152,13 +154,9 @@ fun main(args: Array<String>)  {
                             VALUES (?,?,?,?)
                         """.trimIndent()
                     )
-                    val ratings : MutableList<Double> = mutableListOf()
-                    for (i in list) {
-                        ratings.add(String.format("%.3f", i.first.toString()).toDouble())
-                    }
-                    println(ratings)
+                    
                     val arr1 : java.sql.Array = conn.createArrayOf("INT", recommendations.toTypedArray())
-                    val arr2 : java.sql.Array = conn.createArrayOf("FLOAT", ratings.toTypedArray())
+                    val arr2 : java.sql.Array = conn.createArrayOf("VARCHAR", ratings.toTypedArray())
                     stmt.setInt(1, userId.toString().toInt())
                     stmt.setArray(2, arr1)
                     stmt.setArray(3, arr2)
