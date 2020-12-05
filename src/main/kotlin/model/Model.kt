@@ -86,7 +86,7 @@ class CFmodel()
 
     fun postEval(recommender:Recommender) {
         // TODO: add evaluation here, then store to the database
-        val url = "jdbc:postgresql://localhost:5432/se4ai_t4?user=postgres&password=team_jelly"
+        val url = "jdbc:postgresql://database:5432/se4ai_t4?user=postgres&password=team_jelly"
         try {
             val conn: Connection = DriverManager.getConnection(url);
 
