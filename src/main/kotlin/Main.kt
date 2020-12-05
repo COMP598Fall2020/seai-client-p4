@@ -51,14 +51,15 @@ fun main(args: Array<String>)  {
                     var f1 = mutableListOf<Float>()
                     var time = mutableListOf<String>()
                     while (result.next()) {
-                        rmse.add(result.getFloat(1))
-                        pre.add(result.getFloat(2))
-                        recall.add(result.getFloat(3))
-                        f1.add(result.getFloat(4))
-                        time.add(result.getString(5))
+                        rmse.add(result.getFloat(2))
+                        pre.add(result.getFloat(3))
+                        recall.add(result.getFloat(4))
+                        f1.add(result.getFloat(5))
+                        time.add(result.getString(6))
+                        println(result.getString(6))
                     }
                     conn.close()
-
+                    println(plotPage(rmse, pre, recall, f1, time))
                     out.println(plotPage(rmse, pre, recall, f1, time))
 
                 }
@@ -136,16 +137,16 @@ fun plotPage(rmse:List<Float>, pre:List<Float>, recall:List<Float>, f1:List<Floa
     var recall_data : String = ""
     var f1_data : String = ""
 
-    for (i in 0..time.size) {
+    for (i in 0..time.size-1) {
         val list = time[i].substringBefore(" ").split('-')
-        println(list)
-        rmse_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + "), y: " + rmse[i] + " },\n"
-        pre_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + "), y: " + pre[i] + " },\n"
-        recall_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + "), y: " + recall[i] + " },\n"
-        f1_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + "), y: " + f1[i] + " },\n"
+        rmse_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + "), y: " + rmse[i].toString() + " },\n"
+        pre_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + "), y: " + pre[i].toString() + " },\n"
+        recall_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + "), y: " + recall[i].toString() + " },\n"
+        f1_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + "), y: " + f1[i].toString() + " },\n"
     }
 
-    return "<!DOCTYPE HTML>\n" +
+    val result = 
+            "<!DOCTYPE HTML>\n" +
             "<html>\n" +
             "<head>  \n" +
             "<script>\n" +
@@ -223,5 +224,6 @@ fun plotPage(rmse:List<Float>, pre:List<Float>, recall:List<Float>, f1:List<Floa
             "<script src=\"https://canvasjs.com/assets/script/canvasjs.min.js\"></script>\n" +
             "</body>\n" +
             "</html>"
-
+    println("result is " + result)
+    return "hello world"
 }
