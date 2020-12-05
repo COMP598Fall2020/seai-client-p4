@@ -139,10 +139,10 @@ fun plotPage(rmse:List<Float>, pre:List<Float>, recall:List<Float>, f1:List<Floa
     for (i in 0..time.size-1) {
         val list = time[i].substringBefore(" ").split('-')
         val t = time[i].substringAfter(" ").split('.')[0].split(':')
-        rmse_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + t[0] + "," + t[1] + "," + t[2] + "), y: " + rmse[i].toString() + " },\n"
-        pre_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + t[0] + "," + t[1] + "," + t[2] + "), y: " + pre[i].toString() + " },\n"
-        recall_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + t[0] + "," + t[1] + "," + t[2] + "), y: " + recall[i].toString() + " },\n"
-        f1_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + t[0] + "," + t[1] + "," + t[2] + "), y: " + f1[i].toString() + " },\n"
+        rmse_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + "," + t[0] + "," + t[1] + "," + t[2] + "), y: " + rmse[i].toString() + " },\n"
+        pre_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + "," + t[0] + "," + t[1] + "," + t[2] + "), y: " + pre[i].toString() + " },\n"
+        recall_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + "," + t[0] + "," + t[1] + "," + t[2] + "), y: " + recall[i].toString() + " },\n"
+        f1_data += "\t\t\t{ x: new Date(" + list[0] + "," + list[1] + "," + list[2] + "," + t[0] + "," + t[1] + "," + t[2] + "), y: " + f1[i].toString() + " },\n"
     }
 
     val result =
